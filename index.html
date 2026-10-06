@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BODY IQ Analytics — Decode your body. Optimize what matters most.</title>
+<meta name="description" content="Advanced DNA and functional testing, personalized nutrition and targeted supplements, guided by qualified professionals.">
+<meta name="theme-color" content="#003547">
+<link rel="icon" type="image/png" href="./logos/icon-swirl.png">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Sans+Arabic:wght@400;500&amp;display=swap">
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:#F7FAFB;color:#0B2A33;font-family:'IBM Plex Sans','IBM Plex Sans Arabic',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#09606D;text-decoration:none}a:hover{color:#1A7A86}
+input::placeholder,textarea::placeholder{color:#3E6B7499}
+@keyframes seaDrift1{0%{transform:translate(0,0) scale(1)}100%{transform:translate(8%,-6%) scale(1.12)}}
+@keyframes seaDrift2{0%{transform:translate(0,0) scale(1.08)}100%{transform:translate(-10%,5%) scale(.92)}}
+</style>
+</helmet>
+<div style="min-height:100vh;overflow-x:clip;position:relative;display:flex;flex-direction:column">
+
+  <div style="position:fixed;inset:0;z-index:100;pointer-events:{{ menuPE }}">
+    <div onClick="{{ closeMenu }}" style="position:absolute;inset:0;background:#00354773;opacity:{{ menuOp }};transition:opacity .4s"></div>
+    <div style="position:absolute;top:0;right:0;bottom:0;width:100%;max-width:440px;background:#F7FAFB;transform:{{ menuTf }};transition:transform .55s cubic-bezier(.7,0,.2,1);display:flex;flex-direction:column">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid #0B2A3314">
+        <span style="display:flex;align-items:center;gap:10px;color:#003547"><img src="./logos/icon-swirl.png" data-logo="1" alt="" style="width:32px;height:32px;object-fit:contain"><span style="display:flex;flex-direction:column;line-height:1"><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;letter-spacing:-0.01em">BODY IQ</span><span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:9px;letter-spacing:0.3em;color:#1A7A86;margin-top:3px">ANALYTICS</span></span></span>
+        <button onClick="{{ closeMenu }}" aria-label="Close menu" style="border:none;cursor:pointer;width:40px;height:40px;border-radius:50%;background:#D2ECF2;font-size:16px;color:#003547">✕</button>
+      </div>
+      <div style="flex:1;overflow-y:auto;padding:8px 20px 20px;display:flex;flex-direction:column">
+        <sc-for list="{{ menuLinks }}" as="l" hint-placeholder-count="12">
+          <a href="{{ l.href }}" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid #0B2A3310;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:19px;letter-spacing:-0.015em;color:{{ l.col }};opacity:{{ l.op }};transform:{{ l.tf }};transition:opacity .45s {{ l.delay }}, transform .6s cubic-bezier(.2,.8,.2,1) {{ l.delay }}">
+            <span>{{ l.t }}</span><span style="font-size:14px;color:#1A7A86">→</span>
+          </a>
+        </sc-for>
+      </div>
+      <div style="padding:14px 20px 20px;border-top:1px solid #0B2A3314">
+        <a href="./assessment.html" style="display:block;padding:14px;border-radius:999px;background:#09606D;color:#FFFFFF;text-align:center;font-size:14px;font-weight:500;box-shadow:0 1px 0 #FFFFFF26 inset, 0 12px 28px -14px #09606DCC">Start your assessment</a>
+      </div>
+    </div>
+  </div>
+
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:40;background:{{ navBg }};backdrop-filter:{{ navBlur }};-webkit-backdrop-filter:{{ navBlur }};border-bottom:1px solid {{ navBd }};transition:background .3s,color .3s;color:{{ navFg }}">
+    <div style="max-width:1240px;margin:0 auto;padding:12px clamp(16px,3vw,40px);display:flex;align-items:center;justify-content:space-between;gap:16px">
+      <a href="#/" style="display:flex;align-items:center;gap:10px;color:inherit">
+        <img src="./logos/icon-swirl.png" data-logo="1" alt="" style="width:36px;height:36px;object-fit:contain;filter:{{ logoFilter }};transition:filter .3s">
+        <span style="display:flex;flex-direction:column;line-height:1">
+          <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.01em">BODY IQ</span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:9px;letter-spacing:0.3em;opacity:.85;margin-top:3px">ANALYTICS</span>
+        </span>
+      </a>
+      <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;gap:2px;font-size:13px">
+          <sc-for list="{{ navLinks }}" as="n" hint-placeholder-count="6">
+            <a href="{{ n.href }}" style="padding:7px 11px;border-radius:999px;color:inherit;background:{{ n.bg }}" style-hover="background:{{ navHover }}">{{ n.t }}</a>
+          </sc-for>
+        </div>
+      </sc-if>
+      <div style="display:flex;align-items:center;gap:6px">
+        <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}">
+          <a href="#/contact" style="padding:7px 11px;font-size:13px;color:inherit">Contact</a>
+        </sc-if>
+        <a href="./assessment.html" style="padding:11px 18px;border-radius:999px;background:#09606D;color:#FFFFFF;font-size:13px;font-weight:500;line-height:1;white-space:nowrap;box-shadow:0 1px 0 #FFFFFF26 inset, 0 10px 22px -12px #09606DCC;transition:transform .25s,background .25s" style-hover="transform:translateY(-1px);background:#075057;color:#FFFFFF">{{ navCta }}</a>
+        <sc-if value="{{ mob }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ openMenu }}" aria-label="Open menu" style="border:1px solid currentColor;cursor:pointer;width:38px;height:38px;border-radius:50%;background:transparent;color:inherit;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:0">
+            <span style="width:14px;height:1.5px;background:currentColor"></span><span style="width:14px;height:1.5px;background:currentColor"></span>
+          </button>
+        </sc-if>
+      </div>
+    </div>
+  </nav>
+
+  <main data-route="{{ routeKey }}" style="flex:1;padding-top:{{ mainPad }};opacity:{{ pageOp }};transition:opacity .35s ease">
+    <sc-for list="{{ sections }}" as="s" hint-placeholder-count="3">
+      <section style="padding:{{ s.outerPad }};margin-top:{{ s.secMt }};background:{{ s.secBg }}">
+        <div style="max-width:{{ s.max }};margin:0 auto;box-sizing:{{ s.boxSizing }};background:{{ s.bg }};color:{{ s.fg }};padding:{{ s.innerPad }};position:relative;overflow:{{ s.ovf }};isolation:{{ s.iso }}">
+
+          <sc-if value="{{ s.isVideo }}" hint-placeholder-val="{{ false }}">
+            <div style="position:relative;min-height:{{ heroMinH }};display:flex;align-items:flex-end;padding:{{ heroPad }};box-sizing:border-box;color:#FFFFFF">
+              <video ref="{{ videoRef }}" src="./assets/hero3.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto" poster="./assets/web/calm.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-3"></video>
+              <div style="position:absolute;inset:0;z-index:-2;background:#00354766"></div>
+              
+              
+              <div style="display:flex;flex-direction:column;gap:18px;max-width:560px;width:100%;margin:0 auto 0 max(0px,calc(50% - 620px))">
+                <span style="align-self:flex-start;display:flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:0.16em;color:#D2ECF2"><span style="width:24px;height:1px;background:currentColor"></span>{{ s.k }}</span>
+                <h1 style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(32px,4.2vw,58px);line-height:1.06;letter-spacing:-0.03em"><sc-for list="{{ s.words }}" as="wd" hint-placeholder-count="6"><span data-word="1" style="display:inline-block;color:{{ wd.c }}">{{ wd.w }}</span> </sc-for></h1>
+                <p data-fade="1" style="margin:0;font-size:clamp(16px,1.25vw,18px);line-height:1.6;color:#F7FAFB;max-width:500px">{{ s.d }}</p>
+                <div data-fade="1" style="display:flex;gap:10px;flex-wrap:wrap">
+                  <a href="{{ s.ctaHref }}" style="padding:14px 24px;border-radius:999px;background:#F7FAFB;color:#003547;font-size:14px;font-weight:500;letter-spacing:0.01em;line-height:1;display:inline-flex;align-items:center;gap:8px;box-shadow:0 12px 28px -14px #00000099;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,background .25s" style-hover="transform:translateY(-2px);background:#D2ECF2;color:#003547">{{ s.cta }}</a>
+                  <a href="{{ s.cta2Href }}" style="padding:13px 23px;border-radius:999px;border:1px solid #FFFFFF66;background:transparent;color:#FFFFFF;font-size:14px;font-weight:500;letter-spacing:0.01em;line-height:1;display:inline-flex;align-items:center;gap:8px;transition:background .25s,border-color .25s" style-hover="background:#FFFFFF1F;border-color:#FFFFFF;color:#FFFFFF">{{ s.cta2 }}</a>
+                </div>
+                <div data-fade="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;padding-top:16px;border-top:1px solid #FFFFFF26">
+                  <sc-for list="{{ heroFacts }}" as="hf" hint-placeholder-count="3">
+                    <div style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-family:'Space Grotesk',sans-serif;font-size:clamp(16px,1.3vw,20px);letter-spacing:-0.02em;line-height:1.2">{{ hf.v }}</span><span style="font-size:11px;letter-spacing:0.08em;color:#D2ECF2">{{ hf.k }}</span></div>
+                  </sc-for>
+                </div>
+              </div>
+
+              <div style="position:absolute;right:clamp(18px,4vw,56px);bottom:24px;display:{{ cueDisp }};flex-direction:column;align-items:center;gap:6px;font-size:10px;letter-spacing:0.2em;color:#D2ECF2;pointer-events:none">SCROLL<span data-cue="1" style="width:1px;height:28px;background:linear-gradient(180deg,#D2ECF2,#D2ECF200)"></span></div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.isStory }}" hint-placeholder-val="{{ false }}">
+            <div id="story" ref="{{ s.storyRef }}" style="position:relative;height:{{ s.storyH }};background:#003547">
+    <div style="position:sticky;top:0;height:100vh;overflow:hidden;background:#003547;color:#F7FAFB">
+      <canvas ref="{{ s.canvasRef }}" style="position:absolute;inset:0;width:100%;height:100%"></canvas>
+      <div style="position:absolute;left:0;right:0;top:{{ s.textTop }};bottom:{{ s.textBottom }};max-width:1240px;margin:0 auto;padding:0 clamp(18px,3vw,40px);box-sizing:border-box;pointer-events:none">
+        <sc-for list="{{ s.scenes }}" as="sc" hint-placeholder-count="1">
+          <div data-scene="{{ sc.i }}" style="position:absolute;left:clamp(18px,3vw,40px);right:clamp(18px,3vw,40px);top:{{ sc.top }};opacity:0;max-width:{{ s.textMax }};display:flex;flex-direction:column;gap:16px;will-change:transform,opacity">
+            <span style="display:flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:0.16em;color:#91B9C1"><span style="width:24px;height:1px;background:currentColor"></span>{{ sc.k }}</span>
+            <h2 style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(28px,3vw,42px);line-height:1.06;letter-spacing:-0.035em;text-wrap:balance">{{ sc.t }}</h2>
+            <p style="margin:0;font-size:clamp(16px,1.2vw,18px);line-height:1.6;color:#D2ECF2;max-width:440px">{{ sc.d }}</p>
+          </div>
+        </sc-for>
+      </div>
+      <div style="position:absolute;right:clamp(12px,2vw,28px);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;pointer-events:none">
+        <sc-for list="{{ s.dots }}" as="d" hint-placeholder-count="7">
+          <span data-sdot="{{ d.i }}" style="width:6px;height:6px;border-radius:999px;background:#FFFFFF40;transition:height .4s,background .4s"></span>
+        </sc-for>
+      </div>
+      <div style="position:absolute;left:0;right:0;bottom:0;height:3px;background:#FFFFFF14"><div data-sprog="1" style="height:100%;width:0%;background:#D2ECF2"></div></div>
+    </div>
+  </div>
+          </sc-if>
+          <sc-if value="{{ s.isJourney }}" hint-placeholder-val="{{ false }}">
+            <div style="background:#003547;color:#F7FAFB">
+            <div id="journey" style="max-width:1240px;margin:0 auto;padding:{{ s.jPad }};display:flex;flex-direction:column;gap:clamp(32px,4vw,56px)">
+    <div style="display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center">
+      <span style="display:flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:0.16em;color:#91B9C1"><span style="width:24px;height:1px;background:currentColor"></span>THE BODY IQ JOURNEY<span style="width:24px;height:1px;background:currentColor"></span></span>
+      <h2 style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(28px,3vw,42px);line-height:1.06;letter-spacing:-0.035em;color:#F7FAFB;text-wrap:balance">From first answer to your plan.</h2>
+    </div>
+    <div style="position:sticky;top:62px;z-index:5;background:#003547;padding:12px 0;display:grid;grid-template-columns:repeat({{ s.jTabCols }},minmax(0,1fr));gap:6px">
+      <sc-for list="{{ s.jTabs }}" as="t" hint-placeholder-count="6">
+        <button onClick="{{ t.go }}" style="all:unset;cursor:pointer;display:flex;flex-direction:column;gap:8px;padding:4px 2px;min-width:0">
+          <span style="font-size:{{ s.tabLabel }};font-weight:600;letter-spacing:0.1em;color:{{ t.lc }};transition:color .3s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ t.k }}</span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:{{ s.tabNum }};letter-spacing:-0.03em;line-height:1;color:{{ t.nc }};transition:color .3s">{{ t.n }}</span>
+          <span style="height:3px;border-radius:999px;background:#FFFFFF1F;overflow:hidden"><span style="display:block;height:100%;width:{{ t.fill }};background:#D2ECF2;transition:width .5s cubic-bezier(.2,.8,.2,1)"></span></span>
+        </button>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:{{ s.jCols }};gap:clamp(28px,5vw,72px);align-items:start">
+      <sc-if value="{{ s.jDesk }}" hint-placeholder-val="{{ true }}">
+        <div style="position:sticky;top:170px;aspect-ratio:1;border-radius:28px;overflow:hidden;background:#075057;box-shadow:0 40px 80px -40px #00000099">
+          <sc-for list="{{ s.jSteps }}" as="js" hint-placeholder-count="1">
+            <div style="position:absolute;inset:0;opacity:{{ js.op }};transform:scale({{ js.sc }});transition:opacity .7s ease, transform 1.2s cubic-bezier(.2,.8,.2,1)">
+              <image-slot id="{{ js.slot }}" shape="rect" src="{{ js.src }}" credit="{{ js.credit }}" credit-href="{{ js.href }}"></image-slot>
+            </div>
+          </sc-for>
+          <div style="position:absolute;left:16px;bottom:16px;padding:10px 16px;border-radius:999px;background:#F7FAFB;font-family:'Space Grotesk',sans-serif;font-size:15px;color:#003547;pointer-events:none">{{ s.jNow }}</div>
+        </div>
+      </sc-if>
+      <div style="display:flex;flex-direction:column">
+        <sc-for list="{{ s.jSteps }}" as="js" hint-placeholder-count="6">
+          <div id="{{ js.id }}" data-reveal="1" style="min-height:{{ s.stepMin }};display:flex;flex-direction:column;justify-content:center;gap:16px;padding:32px 0;border-top:1px solid #FFFFFF1F;opacity:{{ js.textOp }};transition:opacity .5s">
+            <div style="display:flex;align-items:baseline;gap:14px">
+              <span style="font-size:12px;font-weight:600;letter-spacing:0.14em;color:#91B9C1">{{ js.k }}</span>
+              <span style="font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,2.6vw,38px);letter-spacing:-0.04em;line-height:1;color:#D2ECF2">{{ js.n }}</span>
+              <sc-if value="{{ js.later }}" hint-placeholder-val="{{ false }}"><span style="font-size:11px;font-weight:600;letter-spacing:0.1em;padding:5px 10px;border-radius:999px;background:#D2ECF2;color:#075057">COMING SOON</span></sc-if>
+            </div>
+            <h3 style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(18px,1.4vw,22px);line-height:1.25;letter-spacing:-0.015em;color:#F7FAFB">{{ js.t }}</h3>
+            <p style="margin:0;font-size:16px;line-height:1.6;color:#D2ECF2;max-width:480px">{{ js.d }}</p>
+            <sc-if value="{{ s.jMob }}" hint-placeholder-val="{{ false }}">
+              <div style="position:relative;aspect-ratio:16/10;border-radius:20px;overflow:hidden;background:#075057;margin-top:4px"><image-slot id="{{ js.mslot }}" shape="rect" src="{{ js.src }}" credit="{{ js.credit }}" credit-href="{{ js.href }}"></image-slot></div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.isHero }}" hint-placeholder-val="{{ true }}">
+            <div style="display:grid;grid-template-columns:{{ s.heroGrid }};gap:{{ s.heroGap }};align-items:center">
+              <div style="order:{{ s.heroTextOrder }};display:flex;flex-direction:column;align-items:{{ s.heroAlign }};text-align:{{ s.heroTA }};gap:16px;max-width:{{ s.heroMaxW }};justify-self:{{ s.heroAlign }}">
+                <span style="display:flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:0.16em;color:{{ s.kc }}"><span style="width:24px;height:1px;background:currentColor"></span>{{ s.k }}</span>
+                <h1 style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(36px,4.2vw,58px);line-height:1.04;letter-spacing:-0.035em"><sc-for list="{{ s.words }}" as="wd" hint-placeholder-count="5"><span data-word="1" style="display:inline-block;color:{{ wd.c }}">{{ wd.w }}</span> </sc-for></h1>
+                <p data-fade="1" style="margin:0;font-size:clamp(16px,1.25vw,18px);line-height:1.6;color:{{ s.mut }};max-width:520px">{{ s.d }}</p>
+                <sc-if value="{{ s.cta }}" hint-placeholder-val="{{ false }}">
+                  <div data-fade="1" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;justify-content:{{ s.heroAlign }}">
+                    <a href="{{ s.ctaHref }}" style="padding:14px 24px;border-radius:999px;background:#09606D;color:#FFFFFF;font-size:14px;font-weight:500;letter-spacing:0.01em;line-height:1;display:inline-flex;align-items:center;gap:8px;box-shadow:0 1px 0 #FFFFFF26 inset, 0 12px 28px -14px #09606DCC;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,background .25s" style-hover="transform:translateY(-2px);background:#075057;color:#FFFFFF;box-shadow:0 1px 0 #FFFFFF26 inset, 0 18px 34px -14px #075057E6" style-active="transform:scale(.97)">{{ s.cta }}</a>
+                    <sc-if value="{{ s.cta2 }}" hint-placeholder-val="{{ false }}"><a href="{{ s.cta2Href }}" style="padding:13px 23px;border-radius:999px;border:1px solid #09606D40;background:transparent;color:#003547;font-size:14px;font-weight:500;letter-spacing:0.01em;line-height:1;display:inline-flex;align-items:center;gap:8px;transition:background .25s,border-color .25s" style-hover="background:#D2ECF2;border-color:#09606D;color:#003547">{{ s.cta2 }}</a></sc-if>
+                  </div>
+                </sc-if>
+              </div>
+              <sc-if value="{{ s.hasHeroImg }}" hint-placeholder-val="{{ false }}">
+                <div style="position:relative;order:{{ s.heroImgOrder }}">
+                  <div data-heroimg="1" style="position:relative;aspect-ratio:{{ s.heroAr }};border-radius:28px;overflow:hidden;background:#D2ECF2;box-shadow:0 50px 90px -50px #00354799">
+                    <div style="position:absolute;left:0;right:0;top:-10%;bottom:-10%"><image-slot id="{{ s.slot }}-hero" shape="rect" src="{{ s.heroImg }}"></image-slot></div>
+                  </div>
+                  <div data-float="1" style="position:absolute;left:{{ s.chipLeft }};bottom:24px;padding:12px 16px;border-radius:20px;background:#FFFFFF;border:1px solid #0B2A3314;box-shadow:0 20px 40px -20px #00354766;display:flex;align-items:center;gap:10px;pointer-events:none">
+                    <span style="width:30px;height:30px;border-radius:50%;background:#09606D;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:13px">IQ</span>
+                    <div style="display:flex;flex-direction:column"><span style="font-size:10px;font-weight:600;letter-spacing:0.12em;color:#1A7A86">BODY IQ</span><span style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#003547">{{ s.chip }}</span></div>
+                  </div>
+                </div>
+              </sc-if>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.hasHead }}" hint-placeholder-val="{{ false }}">
+            <div data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:16px 32px;align-items:end;margin-bottom:{{ s.headMb }}">
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <span style="display:flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:0.16em;color:{{ s.kc }}"><span style="width:24px;height:1px;background:currentColor"></span>{{ s.k }}</span>
+                <h2 style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(28px,3vw,42px);line-height:1.06;letter-spacing:-0.035em;text-wrap:balance"><sc-for list="{{ s.words }}" as="wd" hint-placeholder-count="4"><span style="color:{{ wd.c }}">{{ wd.w }} </span></sc-for></h2>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+                <sc-if value="{{ s.d }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:16px;line-height:1.6;color:{{ s.mut }};max-width:480px">{{ s.d }}</p></sc-if>
+                <sc-if value="{{ s.headLink }}" hint-placeholder-val="{{ false }}"><a href="{{ s.ctaHref }}" style="font-size:14px;font-weight:500;color:{{ s.kc }}">{{ s.cta }} →</a></sc-if>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ s.isScrolly }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:{{ s.scCols }};gap:clamp(28px,5vw,72px);align-items:start">
+              <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}">
+                <div style="position:sticky;top:96px;aspect-ratio:4/5;max-height:calc(100vh - 128px);border-radius:28px;overflow:hidden;background:#D2ECF2;box-shadow:0 40px 80px -48px #00354799">
+                  <sc-for list="{{ s.items }}" as="c" hint-placeholder-count="1">
+                    <div style="position:absolute;inset:0;opacity:{{ c.op }};transform:scale({{ c.sc }});transition:opacity .7s ease, transform 1.2s cubic-bezier(.2,.8,.2,1)"><image-slot id="{{ c.slot }}" shape="rect" src="{{ c.img }}"></image-slot></div>
+                  </sc-for>
+                  <div style="position:absolute;left:14px;right:14px;bottom:14px;padding:12px 16px;border-radius:20px;background:#003547D9;border:1px solid #FFFFFF26;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:#FFFFFF;display:flex;flex-direction:column;gap:8px;pointer-events:none">
+                    <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-family:'Space Grotesk',sans-serif;font-size:15px">{{ s.nowT }}</span><span style="font-size:11px;letter-spacing:0.1em;color:#D2ECF2">{{ s.nowN }}</span></div>
+                    <div style="height:3px;border-radius:999px;background:#FFFFFF33;overflow:hidden"><div style="height:100%;width:{{ s.scPct }};background:#D2ECF2;transition:width .6s cubic-bezier(.2,.8,.2,1)"></div></div>
+                  </div>
+                </div>
+              </sc-if>
+              <div style="display:flex;flex-direction:column">
+                <sc-for list="{{ s.items }}" as="c" hint-placeholder-count="4">
+                  <div data-scr="{{ c.key }}" style="min-height:{{ s.stepMin }};display:flex;flex-direction:column;justify-content:center;gap:12px;padding:32px 0;border-top:1px solid {{ s.lineBd }};opacity:{{ c.textOp }};transform:translateX({{ c.tx }});transition:opacity .5s, transform .6s cubic-bezier(.2,.8,.2,1)">
+                    <div style="display:flex;align-items:center;gap:12px">
+                      <span style="width:36px;height:36px;border-radius:50%;background:{{ c.dotBg }};color:{{ c.dotFg }};border:1px solid {{ s.scDotBd }};display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:13px;transition:all .4s">{{ c.n }}</span>
+                      <sc-if value="{{ c.tag }}" hint-placeholder-val="{{ false }}"><span style="font-size:10px;font-weight:600;letter-spacing:0.1em;color:{{ s.kc }}">{{ c.tag }}</span></sc-if>
+                    </div>
+                    <h3 style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(22px,1.8vw,28px);line-height:1.2;letter-spacing:-0.02em;color:{{ s.fg }}">{{ c.t }}</h3>
+                    <p style="margin:0;font-size:clamp(16px,1.2vw,17px);line-height:1.6;color:{{ s.mut }};max-width:460px">{{ c.d }}</p>
+                    <sc-if value="{{ mob }}" hint-placeholder-val="{{ false }}"><div style="position:relative;aspect-ratio:4/3;border-radius:20px;overflow:hidden;background:#D2ECF2;margin-top:6px"><image-slot id="{{ c.slot }}-m" shape="rect" src="{{ c.img }}"></image-slot></div></sc-if>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.isPaths }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,{{ s.min }}),1fr));gap:16px;align-items:stretch">
+              <sc-for list="{{ s.items }}" as="c" hint-placeholder-count="3">
+                <div data-reveal="1" style="position:relative;border-radius:20px;background:{{ s.card }};border:1px solid {{ s.cardBd }};box-shadow:{{ s.cardSh }};padding:12px 12px 24px;display:flex;flex-direction:column;gap:16px;transition:transform .3s" style-hover="transform:translateY(-3px)">
+                  <div style="position:relative;aspect-ratio:{{ c.ar }};border-radius:12px;overflow:hidden;background:#D2ECF2">
+                    <image-slot id="{{ c.slot }}" shape="rect" src="{{ c.img }}" placeholder="{{ c.ph }}"></image-slot>
+                    <span style="position:absolute;top:12px;left:12px;width:32px;height:32px;border-radius:50%;background:#003547;color:#F7FAFB;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:500">{{ c.n }}</span>
+                    <sc-if value="{{ c.tag }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:14px;right:12px;padding:4px 9px;border-radius:999px;background:#F7FAFBE6;color:#075057;font-size:10px;font-weight:600;letter-spacing:0.08em">{{ c.tag }}</span></sc-if>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:12px;padding:0 12px;flex:1">
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                      <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(20px,1.6vw,24px);letter-spacing:-0.02em;line-height:1.2">{{ c.t }}</span>
+                      <sc-if value="{{ c.tl }}" hint-placeholder-val="{{ false }}"><span style="font-size:14px;font-weight:600;color:{{ s.kc }}">{{ c.tl }}</span></sc-if>
+                    </div>
+                    <span style="font-size:15px;line-height:1.6;color:{{ s.mut }}">{{ c.d }}</span>
+                    <sc-if value="{{ c.hasInc }}" hint-placeholder-val="{{ false }}">
+                      <div style="display:flex;flex-direction:column;gap:6px">
+                        <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;color:{{ s.kc }}">{{ c.incLabel }}</span>
+                        <sc-for list="{{ c.inc }}" as="b" hint-placeholder-count="4"><span style="display:grid;grid-template-columns:16px 1fr;gap:8px;font-size:14px;line-height:1.5;color:{{ s.fg }}"><span style="color:{{ s.kc }}">✓</span>{{ b }}</span></sc-for>
+                      </div>
+                    </sc-if>
+                    <sc-if value="{{ c.hasGain }}" hint-placeholder-val="{{ false }}">
+                      <div style="display:flex;flex-direction:column;gap:6px;background:{{ s.tagBg }};border-radius:12px;padding:12px 14px">
+                        <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;color:{{ s.tagFg }}">WHAT YOU GAIN</span>
+                        <sc-for list="{{ c.gain }}" as="g" hint-placeholder-count="4"><span style="display:grid;grid-template-columns:16px 1fr;gap:8px;font-size:14px;line-height:1.5;color:#003547"><span style="color:#09606D">•</span>{{ g }}</span></sc-for>
+                      </div>
+                    </sc-if>
+                    <a href="{{ c.href }}" style="margin-top:auto;align-self:flex-start;padding:13px 22px;border-radius:999px;background:#09606D;color:#FFFFFF;font-size:14px;font-weight:500;line-height:1;display:inline-flex;align-items:center;gap:8px;box-shadow:0 1px 0 #FFFFFF26 inset, 0 12px 28px -14px #09606DCC;transition:transform .25s,background .25s" style-hover="transform:translateY(-2px);background:#075057;color:#FFFFFF">{{ c.cta }}</a>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.isRail }}" hint-placeholder-val="{{ false }}">
+            <div id="{{ s.railId }}" style="display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 0 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-padding-left:{{ s.railPad }}">
+              <sc-for list="{{ s.items }}" as="c" hint-placeholder-count="8">
+                <a href="{{ c.linkHref }}" data-reveal="1" style="flex:none;width:{{ s.railW }};aspect-ratio:3/4.2;position:relative;border-radius:12px;overflow:hidden;scroll-snap-align:start;background:#D2ECF2;color:#FFFFFF;transition:transform .5s cubic-bezier(.16,1,.3,1)" style-hover="transform:translateY(-4px);color:#FFFFFF">
+                  <div style="position:absolute;inset:0;transition:transform 1.2s cubic-bezier(.16,1,.3,1)" style-hover="transform:scale(1.06)"><image-slot id="{{ c.slot }}" shape="rect" src="{{ c.img }}"></image-slot></div>
+                  <div style="position:absolute;left:0;right:0;bottom:0;height:46%;background:linear-gradient(180deg,#00354700,#003547B3);pointer-events:none"></div>
+                  <span style="position:absolute;top:10px;left:10px;padding:3px 9px;border-radius:999px;background:#F7FAFBE6;color:#003547;font-size:10px;font-weight:500;pointer-events:none">{{ c.tag }}</span>
+                  <div style="position:absolute;left:12px;right:12px;bottom:12px;display:flex;flex-direction:column;gap:2px;pointer-events:none">
+                    <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:15px;letter-spacing:-0.01em;line-height:1.2">{{ c.t }}</span>
+                    <span style="font-size:11px;line-height:1.35;color:#F7FAFBD9">{{ c.d }}</span>
+                  </div>
+                </a>
+              </sc-for>
+            </div>
+            <div style="display:flex;justify-content:center;align-items:center;gap:10px;margin-top:14px">
+              <button onClick="{{ s.prev }}" aria-label="Previous" style="border:none;background:transparent;cursor:pointer;color:#003547;font-size:14px;padding:6px">←</button>
+              <span style="width:64px;height:1px;background:#0B2A3333"></span>
+              <button onClick="{{ s.next }}" aria-label="Next" style="border:none;background:transparent;cursor:pointer;color:#003547;font-size:14px;padding:6px">→</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.isCardsList }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;border-top:1px solid {{ s.lineBd }}">
+              <sc-for list="{{ s.items }}" as="c" hint-placeholder-count="4">
+                <a href="{{ c.linkHref }}" data-reveal="1" style="display:grid;grid-template-columns:{{ s.listCols }};gap:12px 24px;align-items:start;padding:clamp(18px,2vw,26px) 8px;border-bottom:1px solid {{ s.lineBd }};color:inherit;transition:background .3s" style-hover="background:{{ s.listHover }}">
+                  <span style="font-family:'Space Grotesk',sans-serif;font-size:clamp(22px,2.2vw,30px);letter-spacing:-0.03em;line-height:1;color:{{ s.kc }}">{{ c.n }}<sc-if value="{{ c.tag }}" hint-placeholder-val="{{ false }}"><span style="display:inline-block;font-family:'IBM Plex Sans',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.08em;padding:4px 9px;border-radius:999px;background:{{ s.tagBg }};color:{{ s.tagFg }};vertical-align:middle">{{ c.tag }}</span></sc-if></span>
+                  <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(17px,1.5vw,21px);letter-spacing:-0.015em;line-height:1.25">{{ c.t }}</span>
+                  <div style="display:flex;flex-direction:column;gap:8px">
+                    <span style="font-size:14px;line-height:1.6;color:{{ s.mut }}">{{ c.d }}</span>
+                    <sc-if value="{{ c.meta }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;line-height:1.5;color:{{ s.kc }}">{{ c.meta }}</span></sc-if>
+                    <sc-if value="{{ c.confirm }}" hint-placeholder-val="{{ false }}"><span style="align-self:flex-start;font-size:10px;font-weight:600;letter-spacing:0.06em;padding:3px 8px;border-radius:999px;background:{{ s.tagBg }};color:{{ s.tagFg }}">TO CONFIRM</span></sc-if>
+                    <sc-if value="{{ c.link }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:500;color:{{ s.kc }}">{{ c.link }} →</span></sc-if>
+                  </div>
+                </a>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.isCardsGrid }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,{{ s.min }}),1fr));gap:16px">
+              <sc-for list="{{ s.items }}" as="c" hint-placeholder-count="4">
+                <div data-reveal="1" style="grid-column:{{ c.span }};border-radius:20px;background:{{ s.card }};border:1px solid {{ s.cardBd }};box-shadow:{{ s.cardSh }};padding:{{ c.pad }};display:flex;flex-direction:column;gap:12px;transition:transform .3s" style-hover="transform:translateY(-3px)">
+                  <sc-if value="{{ c.showImg }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:relative;aspect-ratio:{{ c.ar }};border-radius:12px;overflow:hidden;background:#D2ECF2"><div style="position:absolute;left:0;right:0;top:-8%;bottom:-8%"><image-slot id="{{ c.slot }}" shape="rect" src="{{ c.img }}" credit="{{ c.credit }}" credit-href="{{ c.href }}" placeholder="{{ c.ph }}"></image-slot></div></div>
+                  </sc-if>
+                  <div style="display:flex;flex-direction:column;gap:8px;padding:{{ c.textPad }}">
+                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                      <sc-if value="{{ c.n }}" hint-placeholder-val="{{ false }}"><span style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:{{ s.kc }}">{{ c.n }}</span></sc-if>
+                      <sc-if value="{{ c.tag }}" hint-placeholder-val="{{ false }}"><span style="font-size:10px;font-weight:600;letter-spacing:0.08em;padding:4px 9px;border-radius:999px;background:{{ s.tagBg }};color:{{ s.tagFg }}">{{ c.tag }}</span></sc-if>
+                      <sc-if value="{{ c.confirm }}" hint-placeholder-val="{{ false }}"><span style="font-size:10px;font-weight:600;letter-spacing:0.06em;padding:3px 8px;border-radius:999px;background:{{ s.tagBg }};color:{{ s.tagFg }}">TO CONFIRM</span></sc-if>
+                    </div>
+                    <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(18px,1.4vw,21px);letter-spacing:-0.015em;line-height:1.25">{{ c.t }}</span>
+                    <span style="font-size:14px;line-height:1.55;color:{{ s.mut }}">{{ c.d }}</span>
+                    <sc-if value="{{ c.meta }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;line-height:1.5;color:{{ s.kc }};padding-top:8px;border-top:1px solid {{ s.cardBd }}">{{ c.meta }}</span></sc-if>
+                    <sc-if value="{{ c.link }}" hint-placeholder-val="{{ false }}"><a href="{{ c.linkHref }}" style="align-self:flex-start;font-size:14px;font-weight:500;color:{{ s.kc }};padding:10px 0;margin-top:auto">{{ c.link }} →</a></sc-if>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ s.isStepsTimeline }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;max-width:860px">
+              <sc-for list="{{ s.items }}" as="c" hint-placeholder-count="4">
+                <div data-reveal="1" style="display:grid;grid-template-columns:40px 1fr;gap:20px">
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+                    <span style="flex:none;width:36px;height:36px;border-radius:50%;background:#09606D;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:14px">{{ c.n }}</span>
+                    <span style="flex:1;width:1px;background:{{ s.lineBd }};opacity:{{ c.lineOp }}"></span>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:6px;padding:6px 0 clamp(28px,3vw,44px)">
+                    <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(18px,1.6vw,22px);letter-spacing:-0.015em;line-height:1.2">{{ c.t }}</span>
+                    <span style="font-size:15px;line-height:1.6;color:{{ s.mut }};max-width:600px">{{ c.d }}</span>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.isStepsRow }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:0 18px">
+              <sc-for list="{{ s.items }}" as="c" hint-placeholder-count="4">
+                <div data-reveal="1" style="display:flex;flex-direction:column;gap:14px;padding:0 0 24px">
+                  <div style="display:flex;align-items:center;gap:10px">
+                    <span style="flex:none;width:12px;height:12px;border-radius:50%;background:#09606D;box-shadow:0 0 0 4px {{ s.tagBg }}"></span>
+                    <span style="flex:1;height:1px;background:{{ s.lineBd }}"></span>
+                  </div>
+                  <span style="font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,3vw,40px);letter-spacing:-0.04em;line-height:1;color:{{ s.kc }}">{{ c.n2 }}</span>
+                  <div style="display:flex;flex-direction:column;gap:6px">
+                    <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(18px,1.4vw,21px);letter-spacing:-0.015em;line-height:1.25">{{ c.t }}</span>
+                    <span style="font-size:14px;line-height:1.55;color:{{ s.mut }}">{{ c.d }}</span>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.isStepsGrid }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px;counter-reset:none">
+              <sc-for list="{{ s.items }}" as="c" hint-placeholder-count="4">
+                <div data-reveal="1" style="position:relative;border-radius:20px;background:{{ s.card }};border:1px solid {{ s.cardBd }};box-shadow:{{ s.cardSh }};padding:24px;display:flex;flex-direction:column;gap:24px;min-height:200px">
+                  <div style="display:flex;align-items:center;gap:10px">
+                    <span style="width:30px;height:30px;border-radius:50%;background:#09606D;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:13px">{{ c.n }}</span>
+                    <span style="flex:1;height:1px;background:{{ s.cardBd }}"></span>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:6px">
+                    <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(18px,1.4vw,21px);letter-spacing:-0.015em;line-height:1.25">{{ c.t }}</span>
+                    <span style="font-size:14px;line-height:1.55;color:{{ s.mut }}">{{ c.d }}</span>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ s.isSplit }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(24px,4vw,56px);align-items:center">
+              <div data-reveal="1" style="order:{{ s.textOrder }};display:flex;flex-direction:column;gap:16px;max-width:520px">
+                <span style="display:flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:0.16em;color:{{ s.kc }}"><span style="width:24px;height:1px;background:currentColor"></span>{{ s.k }}</span>
+                <h2 style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(28px,3vw,42px);line-height:1.06;letter-spacing:-0.035em;text-wrap:balance"><sc-for list="{{ s.words }}" as="wd" hint-placeholder-count="4"><span style="color:{{ wd.c }}">{{ wd.w }} </span></sc-for></h2>
+                <sc-if value="{{ s.d }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:16px;line-height:1.6;color:{{ s.mut }};max-width:520px">{{ s.d }}</p></sc-if>
+                <div style="display:flex;flex-direction:column;gap:2px;margin-top:6px">
+                  <sc-for list="{{ s.bullets }}" as="b" hint-placeholder-count="3">
+                    <div style="display:grid;grid-template-columns:22px 1fr;gap:10px;padding:12px 0;border-top:1px solid {{ s.cardBd }}">
+                      <span style="width:18px;height:18px;margin-top:2px;border-radius:50%;background:{{ s.tagBg }};color:{{ s.tagFg }};display:flex;align-items:center;justify-content:center;font-size:10px">✓</span>
+                      <div style="display:flex;flex-direction:column;gap:2px">
+                        <span style="font-size:15px;font-weight:600">{{ b.t }}</span>
+                        <sc-if value="{{ b.d }}" hint-placeholder-val="{{ false }}"><span style="font-size:14px;line-height:1.5;color:{{ s.mut }}">{{ b.d }}</span></sc-if>
+                      </div>
+                    </div>
+                  </sc-for>
+                </div>
+                <sc-if value="{{ s.cta }}" hint-placeholder-val="{{ false }}"><a href="{{ s.ctaHref }}" style="align-self:flex-start;margin-top:6px;padding:14px 24px;border-radius:999px;background:#09606D;color:#FFFFFF;font-size:14px;font-weight:500;letter-spacing:0.01em;line-height:1;display:inline-flex;align-items:center;gap:8px;box-shadow:0 1px 0 #FFFFFF26 inset, 0 12px 28px -14px #09606DCC;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,background .25s" style-hover="transform:translateY(-2px);background:#075057;color:#FFFFFF;box-shadow:0 1px 0 #FFFFFF26 inset, 0 18px 34px -14px #075057E6" style-active="transform:scale(.97)">{{ s.cta }}</a></sc-if>
+              </div>
+              <div data-reveal="1" style="order:{{ s.imgOrder }};position:relative;aspect-ratio:{{ s.ar }};max-height:620px;width:100%;border-radius:28px;overflow:hidden;background:#D2ECF2;justify-self:center">
+                <div style="position:absolute;left:0;right:0;top:-12%;bottom:-12%"><image-slot id="{{ s.slot }}" shape="rect" src="{{ s.img }}" credit="{{ s.credit }}" credit-href="{{ s.href }}" placeholder="{{ s.ph }}"></image-slot></div>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ s.isNoticeBand }}" hint-placeholder-val="{{ false }}">
+            <div data-reveal="1" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;max-width:760px;margin:0 auto;padding:clamp(8px,1.5vw,20px) 0">
+              <span style="font-size:11px;font-weight:600;letter-spacing:0.16em;color:{{ s.kc }}">PLEASE NOTE</span>
+              <span style="font-family:'Space Grotesk',sans-serif;font-weight:400;font-size:clamp(22px,2.2vw,32px);letter-spacing:-0.025em;line-height:1.15;text-wrap:balance">{{ s.t }}</span>
+              <span style="font-size:15px;line-height:1.65;color:{{ s.mut }}">{{ s.d }}</span>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.isNoticeIcon }}" hint-placeholder-val="{{ false }}">
+            <div data-reveal="1" style="display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start">
+              <span style="width:40px;height:40px;border-radius:12px;background:{{ s.tagBg }};color:{{ s.tagFg }};display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:18px">i</span>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:19px;letter-spacing:-0.01em">{{ s.t }}</span>
+                <span style="font-size:14px;line-height:1.6;color:{{ s.mut }};max-width:820px">{{ s.d }}</span>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ s.isResults }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(24px,4vw,48px);align-items:start">
+              <div data-reveal="1" style="background:#F7FAFB;border:1px solid #FFFFFF;color:#0B2A33;border-radius:28px;padding:clamp(18px,2.6vw,28px);display:flex;flex-direction:column;gap:18px;box-shadow:0 40px 80px -40px #00000080">
+                <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+                  <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:18px;color:#003547">{{ s.who }}’s top 3 priorities</span>
+                  <span style="font-size:10px;font-weight:600;letter-spacing:0.1em;padding:4px 9px;border-radius:999px;background:#D2ECF2;color:#075057">EXAMPLE</span>
+                </div>
+                <sc-for list="{{ s.pri }}" as="r" hint-placeholder-count="3">
+                  <div style="display:flex;flex-direction:column;gap:8px;padding-top:14px;border-top:1px solid #0B2A3314">
+                    <div style="display:flex;align-items:center;gap:10px">
+                      <span style="width:26px;height:26px;border-radius:50%;background:#09606D;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:12px">{{ r.n }}</span>
+                      <span style="font-size:15px;font-weight:600;color:#003547">{{ r.t }}</span>
+                    </div>
+                    <span style="font-size:13px;line-height:1.55;color:#3E6B74">{{ r.why }}</span>
+                    <div style="display:flex;gap:6px;flex-wrap:wrap">
+                      <sc-for list="{{ r.sol }}" as="o" hint-placeholder-count="2">
+                        <a href="#/approval" style="display:flex;align-items:center;gap:6px;padding:7px 11px;border-radius:999px;background:#D2ECF2;color:#003547;font-size:12px;font-weight:500">{{ o }} <span style="color:#09606D">→</span></a>
+                      </sc-for>
+                    </div>
+                  </div>
+                </sc-for>
+                <span style="font-size:11px;line-height:1.5;color:#3E6B74">Results provide guidance and are not a diagnosis.</span>
+              </div>
+              <div data-reveal="1" style="display:flex;flex-direction:column;gap:10px">
+                <sc-for list="{{ s.bullets }}" as="b" hint-placeholder-count="3">
+                  <div style="border-radius:20px;background:{{ s.card }};border:1px solid {{ s.cardBd }};box-shadow:{{ s.cardSh }};padding:18px;display:flex;flex-direction:column;gap:4px">
+                    <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:17px">{{ b.t }}</span>
+                    <span style="font-size:14px;line-height:1.55;color:{{ s.mut }}">{{ b.d }}</span>
+                  </div>
+                </sc-for>
+                <sc-if value="{{ s.cta }}" hint-placeholder-val="{{ false }}"><a href="{{ s.ctaHref }}" style="align-self:flex-start;margin-top:6px;padding:14px 24px;border-radius:999px;background:#09606D;color:#FFFFFF;font-size:14px;font-weight:500;letter-spacing:0.01em;line-height:1;display:inline-flex;align-items:center;gap:8px;box-shadow:0 1px 0 #FFFFFF26 inset, 0 12px 28px -14px #09606DCC;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,background .25s" style-hover="transform:translateY(-2px);background:#075057;color:#FFFFFF;box-shadow:0 1px 0 #FFFFFF26 inset, 0 18px 34px -14px #075057E6" style-active="transform:scale(.97)">{{ s.cta }}</a></sc-if>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ s.isFaq }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:{{ s.faqCols }};gap:clamp(24px,4vw,64px);align-items:start">
+            <sc-if value="{{ s.t }}" hint-placeholder-val="{{ false }}">
+              <div data-reveal="1" style="display:flex;flex-direction:column;gap:16px;position:{{ s.faqPos }};top:96px;margin-bottom:{{ s.faqMb }}">
+                <span style="display:flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:0.16em;color:{{ s.kc }}"><span style="width:24px;height:1px;background:currentColor"></span>{{ s.k }}</span>
+                <h2 style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(28px,3vw,42px);line-height:1.06;letter-spacing:-0.035em;text-wrap:balance"><sc-for list="{{ s.words }}" as="wd" hint-placeholder-count="3"><span style="color:{{ wd.c }}">{{ wd.w }} </span></sc-for></h2>
+                <p style="margin:0;font-size:16px;line-height:1.6;color:{{ s.mut }};max-width:380px">Short answers to what people ask most. The full list is on the FAQ page.</p>
+                <a href="#/faq" style="align-self:flex-start;font-size:14px;font-weight:500;color:{{ s.kc }}">All questions →</a>
+              </div>
+            </sc-if>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <sc-for list="{{ s.items }}" as="f" hint-placeholder-count="4">
+                <div style="display:flex;flex-direction:column;gap:8px">
+                  <sc-if value="{{ f.group }}" hint-placeholder-val="{{ false }}"><span style="font-size:11px;font-weight:600;letter-spacing:0.16em;color:{{ s.kc }};padding:18px 0 4px">{{ f.group }}</span></sc-if>
+                  <div style="background:{{ s.card }};border:1px solid {{ s.cardBd }};box-shadow:{{ s.cardSh }};border-radius:20px;padding:0 24px">
+                    <button onClick="{{ f.toggle }}" style="all:unset;cursor:pointer;width:100%;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(17px,1.3vw,19px);color:#003547">
+                      <span>{{ f.q }}</span>
+                      <span style="flex:none;width:28px;height:28px;border-radius:50%;background:#D2ECF2;display:flex;align-items:center;justify-content:center;font-size:17px;color:#075057;transform:{{ f.rot }};transition:transform .3s">+</span>
+                    </button>
+                    <div style="max-height:{{ f.mh }};overflow:hidden;transition:max-height .45s ease"><p style="margin:0;padding:0 0 20px;font-size:15px;line-height:1.6;color:#3E6B74;max-width:620px">{{ f.a }}</p></div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ s.isForm }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(20px,3vw,40px);align-items:start">
+              <div data-reveal="1" style="background:#FFFFFF;border:1px solid #0B2A3314;box-shadow:inset 0 1px 0 #FFFFFF, 0 30px 60px -36px #00354759;border-radius:28px;padding:clamp(18px,2.6vw,28px);display:flex;flex-direction:column;gap:14px">
+                <sc-if value="{{ s.summary }}" hint-placeholder-val="{{ false }}">
+                  <div style="border-radius:12px;background:#D2ECF2;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+                    <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:10px;font-weight:600;letter-spacing:0.12em;color:#075057">YOU’RE REQUESTING</span><span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:17px;color:#003547">{{ s.summary }}</span></div>
+                    <a href="#/results" style="font-size:13px;font-weight:500;color:#09606D;padding:10px 12px;margin:-10px -12px">Change</a>
+                  </div>
+                </sc-if>
+                <sc-for list="{{ s.fields }}" as="fd" hint-placeholder-count="4">
+                  <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:#003547">
+                    {{ fd.label }}
+                    <sc-if value="{{ fd.isInput }}" hint-placeholder-val="{{ true }}"><input type="{{ fd.type }}" placeholder="{{ fd.ph }}" style="padding:12px 14px;border-radius:12px;border:1px solid #0B2A3326;background:#F7FAFB;font:400 16px 'IBM Plex Sans',sans-serif;color:#0B2A33;outline:none"></sc-if>
+                    <sc-if value="{{ fd.isArea }}" hint-placeholder-val="{{ false }}"><textarea rows="4" placeholder="{{ fd.ph }}" style="padding:12px 14px;border-radius:12px;border:1px solid #0B2A3326;background:#F7FAFB;font:400 16px 'IBM Plex Sans',sans-serif;color:#0B2A33;outline:none;resize:vertical"></textarea></sc-if>
+                    <sc-if value="{{ fd.isSelect }}" hint-placeholder-val="{{ false }}">
+                      <div style="display:flex;gap:6px;flex-wrap:wrap">
+                        <sc-for list="{{ fd.opts }}" as="op" hint-placeholder-count="3">
+                          <button onClick="{{ op.pick }}" style="border:1px solid {{ op.bd }};cursor:pointer;min-height:44px;padding:10px 16px;border-radius:999px;background:{{ op.bg }};color:{{ op.fg }};font:500 14px 'IBM Plex Sans',sans-serif;transition:all .2s">{{ op.t }}</button>
+                        </sc-for>
+                      </div>
+                    </sc-if>
+                  </label>
+                </sc-for>
+                <sc-for list="{{ s.consents }}" as="cn" hint-placeholder-count="1">
+                  <button onClick="{{ cn.toggle }}" style="all:unset;cursor:pointer;display:grid;grid-template-columns:20px 1fr;gap:12px;padding:6px 0;font-size:14px;line-height:1.5;color:#0B2A33">
+                    <span style="width:18px;height:18px;margin-top:1px;border-radius:5px;border:1.5px solid {{ cn.bd }};background:{{ cn.bg }};color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:11px">{{ cn.mark }}</span>
+                    <span>{{ cn.t }}</span>
+                  </button>
+                </sc-for>
+                <a href="{{ s.submitHref }}" style="align-self:flex-start;margin-top:4px;padding:14px 24px;border-radius:999px;background:#09606D;color:#FFFFFF;font-size:14px;font-weight:500;letter-spacing:0.01em;line-height:1;display:inline-flex;align-items:center;gap:8px;box-shadow:0 1px 0 #FFFFFF26 inset, 0 12px 28px -14px #09606DCC;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,background .25s" style-hover="transform:translateY(-2px);background:#075057;color:#FFFFFF;box-shadow:0 1px 0 #FFFFFF26 inset, 0 18px 34px -14px #075057E6" style-active="transform:scale(.97)">{{ s.submit }}</a>
+                <sc-if value="{{ s.note }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;line-height:1.5;color:#3E6B74">{{ s.note }}</span></sc-if>
+              </div>
+              <div data-reveal="1" style="display:flex;flex-direction:column;gap:10px">
+                <sc-for list="{{ s.bullets }}" as="b" hint-placeholder-count="3">
+                  <div style="border-radius:20px;background:{{ s.card }};border:1px solid {{ s.cardBd }};box-shadow:{{ s.cardSh }};padding:18px;display:flex;flex-direction:column;gap:4px">
+                    <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:16px;color:#003547">{{ b.t }}</span>
+                    <span style="font-size:14px;line-height:1.55;color:#3E6B74">{{ b.d }}</span>
+                    <sc-if value="{{ b.link }}" hint-placeholder-val="{{ false }}"><a href="{{ b.href }}" style="font-size:13px;font-weight:500">{{ b.link }} →</a></sc-if>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ s.isBooking }}" hint-placeholder-val="{{ false }}">
+            <div data-reveal="1" style="border-radius:28px;border:1px solid #0B2A3314;background:#FFFFFF;min-height:380px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:24px">
+              <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:18px;color:#003547">Booking calendar</span>
+              <span style="font-size:13px;color:#3E6B74;max-width:360px">The GoHighLevel booking page embeds here, with live availability, confirmation and reminders.</span>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ s.isSuccess }}" hint-placeholder-val="{{ false }}">
+            <div style="max-width:640px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px">
+              <span data-pop="1" style="width:64px;height:64px;border-radius:50%;background:#09606D;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 0 0 10px #2E7D6B1F">✓</span>
+              <h1 style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(28px,3vw,42px);line-height:1.06;letter-spacing:-0.035em;color:#003547">We’ve received your request.</h1>
+              <p style="margin:0;font-size:15px;line-height:1.6;color:#3E6B74">A qualified member of our team will review it. You’ll receive the outcome by email.</p>
+              <div style="width:100%;background:#FFFFFF;border:1px solid #0B2A3312;border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:10px;text-align:left">
+                <sc-for list="{{ s.rows }}" as="rw" hint-placeholder-count="3">
+                  <div style="display:flex;justify-content:space-between;gap:12px;font-size:14px;padding-bottom:10px;border-bottom:1px solid #0B2A3310"><span style="color:#3E6B74">{{ rw.k }}</span><span style="font-weight:600;color:#003547;text-align:right">{{ rw.v }}</span></div>
+                </sc-for>
+              </div>
+              <div style="width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:8px;text-align:left">
+                <sc-for list="{{ s.items }}" as="c" hint-placeholder-count="3">
+                  <div style="border-radius:12px;background:#D2ECF2;padding:14px;display:flex;flex-direction:column;gap:4px">
+                    <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:#09606D">{{ c.n }}</span>
+                    <span style="font-size:14px;font-weight:600;color:#003547">{{ c.t }}</span>
+                    <span style="font-size:13px;line-height:1.5;color:#3E6B74">{{ c.d }}</span>
+                  </div>
+                </sc-for>
+              </div>
+              <span style="font-size:13px;color:#3E6B74">Need to correct something? <a href="#/contact">Contact support</a></span>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ s.isLegal }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:{{ s.legalCols }};gap:clamp(20px,4vw,56px);align-items:start">
+              <div style="position:{{ s.faqPos }};top:80px;display:flex;flex-direction:column;gap:4px">
+                <span style="font-size:11px;font-weight:600;letter-spacing:0.16em;color:#1A7A86;padding-bottom:8px">ON THIS PAGE</span>
+                <sc-for list="{{ s.blocks }}" as="lb" hint-placeholder-count="5"><span style="font-size:13px;color:#3E6B74;padding:4px 0">{{ lb.h }}</span></sc-for>
+              </div>
+              <div style="min-width:0;display:flex;flex-direction:column;gap:22px;max-width:720px">
+                <div style="border-radius:12px;background:#D2ECF2;padding:12px 14px;font-size:13px;color:#075057">Structure only. Final legal text will be supplied by BODY IQ before launch.</div>
+                <sc-for list="{{ s.blocks }}" as="lb" hint-placeholder-count="5">
+                  <div style="display:flex;flex-direction:column;gap:6px">
+                    <h3 style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(18px,1.4vw,22px);line-height:1.25;letter-spacing:-0.015em;color:#003547">{{ lb.h }}</h3>
+                    <p style="margin:0;font-size:15px;line-height:1.65;color:#3E6B74">{{ lb.p }}</p>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ s.isCta }}" hint-placeholder-val="{{ false }}">
+            <video src="./assets/cta.mp4" autoplay="" muted="" loop="" playsinline="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-3"></video>
+            <div style="position:absolute;inset:0;z-index:-2;background:#003547A6"></div>
+            <div style="display:none;position:absolute;z-index:-1;border-radius:50%;filter:blur(70px);background:radial-gradient(circle,#D2ECF2B3 0%,transparent 66%);width:80%;height:60%;left:10%;bottom:-30%;pointer-events:none"></div>
+            <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:24px;max-width:720px;margin:0 auto;padding:clamp(24px,4vw,56px) 0">
+              <h2 style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(32px,3.8vw,52px);line-height:1.04;letter-spacing:-0.035em;text-wrap:balance"><sc-for list="{{ s.words }}" as="wd" hint-placeholder-count="4"><span style="color:{{ wd.c }}">{{ wd.w }} </span></sc-for></h2>
+              <sc-if value="{{ s.d }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:clamp(16px,1.25vw,18px);line-height:1.6;color:#D2ECF2;max-width:520px">{{ s.d }}</p></sc-if>
+              <a href="{{ s.ctaHref }}" style="padding:14px 24px;border-radius:999px;background:#F7FAFB;color:#003547;font-size:14px;font-weight:500;letter-spacing:0.01em;line-height:1;display:inline-flex;align-items:center;gap:8px;box-shadow:0 12px 28px -14px #00000099;transition:transform .25s cubic-bezier(.2,.8,.2,1),background .25s" style-hover="transform:translateY(-2px);background:#D2ECF2;color:#003547">{{ s.cta }}</a>
+            </div>
+          </sc-if>
+
+        </div>
+      </section>
+    </sc-for>
+  </main>
+
+  <footer style="background:#003547;color:#D2ECF2">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(40px,5vw,64px) clamp(16px,3vw,40px) 28px;display:flex;flex-direction:column;gap:32px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:28px 20px">
+        <div style="display:flex;flex-direction:column;gap:10px;grid-column:{{ footBrandCol }};min-width:0">
+          <span style="display:flex;align-items:center;gap:12px;color:#F7FAFB"><img src="./logos/icon-swirl.png" data-logo="1" alt="" style="width:44px;height:44px;object-fit:contain;filter:brightness(0) invert(1)"><span style="display:flex;flex-direction:column;line-height:1"><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;letter-spacing:-0.01em">BODY IQ</span><span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:10px;letter-spacing:0.3em;color:#91B9C1;margin-top:4px">ANALYTICS</span></span></span>
+          <span style="font-size:14px;line-height:1.5;max-width:300px">Discover your biology. Unlock your potential.</span>
+        </div>
+        <sc-for list="{{ footerCols }}" as="c" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;gap:9px;font-size:13px">
+            <span style="font-size:10px;font-weight:600;letter-spacing:0.16em;color:#91B9C1">{{ c.h }}</span>
+            <sc-for list="{{ c.links }}" as="l" hint-placeholder-count="4"><a href="{{ l.href }}" style="color:#F7FAFB" style-hover="color:#D2ECF2">{{ l.t }}</a></sc-for>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:0;font-size:12px;line-height:1.55;color:#91B9C1;max-width:880px;border-top:1px solid #FFFFFF1F;padding-top:20px">© 2026 BODY IQ Analytics. Information on this site is educational and does not replace medical advice, diagnosis or treatment. Any protocol requires evaluation by a qualified professional.</p>
+    </div>
+  </footer>
+
+  <div style="position:fixed;right:clamp(16px,2.5vw,28px);bottom:clamp(16px,2.5vw,28px);z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:12px;pointer-events:none">
+    <div style="pointer-events:{{ chatPE }};opacity:{{ chatOp }};transform:{{ chatTf }};transition:opacity .25s ease, transform .3s cubic-bezier(.2,.8,.2,1);position:{{ chatPos }};left:{{ chatLeft }};right:{{ chatRight }};bottom:{{ chatBottom }};width:{{ chatW }};height:{{ chatH }};background:#FFFFFF;border:1px solid #0B2A3314;border-radius:{{ chatRadius }};box-shadow:0 -10px 60px -20px #00354766;display:flex;flex-direction:column;overflow:hidden;z-index:61">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;background:#003547;color:#F7FAFB">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="width:32px;height:32px;border-radius:50%;background:#D2ECF2;display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#003547" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 0 1-8 8H6l-3 3V12a8 8 0 0 1 8-8h1a8 8 0 0 1 8 8z"></path></svg></span>
+          <div style="display:flex;flex-direction:column"><span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:15px">BODY IQ assistant</span><span style="font-size:11px;color:#91B9C1">Answers about the assessment, not medical advice</span></div>
+        </div>
+        <button onClick="{{ chatClose }}" aria-label="Close chat" style="border:none;cursor:pointer;width:40px;height:40px;border-radius:50%;background:#FFFFFF14;color:#F7FAFB;font-size:15px;display:flex;align-items:center;justify-content:center">✕</button>
+      </div>
+      <div ref="{{ chatLogRef }}" style="flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:#F7FAFB">
+        <sc-for list="{{ chatMsgs }}" as="m" hint-placeholder-count="1">
+          <div style="align-self:{{ m.align }};max-width:85%;padding:10px 14px;border-radius:16px;background:{{ m.bg }};color:{{ m.fg }};font-size:14px;line-height:1.5;white-space:pre-wrap;border:1px solid {{ m.bd }}">{{ m.text }}</div>
+        </sc-for>
+        <sc-if value="{{ chatBusy }}" hint-placeholder-val="{{ false }}"><div style="align-self:flex-start;padding:10px 14px;border-radius:16px;background:#FFFFFF;border:1px solid #0B2A3314;color:#3E6B74;font-size:13px">Thinking…</div></sc-if>
+        <sc-if value="{{ chatShowChips }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-wrap:wrap;gap:6px;padding-top:4px">
+            <sc-for list="{{ chatChips }}" as="c" hint-placeholder-count="3">
+              <button onClick="{{ c.ask }}" style="border:1px solid #09606D40;cursor:pointer;padding:8px 12px;border-radius:999px;background:#FFFFFF;color:#003547;font:500 12px 'IBM Plex Sans',sans-serif" style-hover="background:#D2ECF2">{{ c.t }}</button>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+      <div style="display:flex;gap:8px;padding:12px;border-top:1px solid #0B2A3314;background:#FFFFFF">
+        <input value="{{ chatInput }}" onChange="{{ chatType }}" onKeyDown="{{ chatKey }}" placeholder="Ask about the assessment…" style="flex:1;min-width:0;padding:12px 14px;border-radius:999px;border:1px solid #0B2A3326;background:#F7FAFB;font:400 16px 'IBM Plex Sans',sans-serif;color:#0B2A33;outline:none">
+        <button onClick="{{ chatSend }}" aria-label="Send" style="border:none;cursor:pointer;width:44px;height:44px;border-radius:50%;background:#09606D;color:#FFFFFF;font-size:16px;flex:none">↑</button>
+      </div>
+    </div>
+    <button onClick="{{ chatToggle }}" aria-label="Open chat" style="pointer-events:auto;border:none;cursor:pointer;height:56px;min-width:56px;padding:{{ chatBtnPad }};display:{{ chatBtnDisp }};border-radius:999px;background:#003547;color:#F7FAFB;display:flex;align-items:center;justify-content:center;gap:10px;font:500 14px 'IBM Plex Sans',sans-serif;box-shadow:0 16px 36px -14px #003547CC;transition:transform .25s,background .25s" style-hover="transform:translateY(-2px);background:#075057">
+      <sc-if value="{{ chatOpenIcon }}" hint-placeholder-val="{{ true }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D2ECF2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 0 1-8 8H6l-3 3V12a8 8 0 0 1 8-8h1a8 8 0 0 1 8 8z"></path><path d="M9 11h6"></path><path d="M9 14h4"></path></svg></sc-if>
+      <sc-if value="{{ chatCloseIcon }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D2ECF2" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></sc-if>
+      <span style="display:{{ chatLblDisp }}">{{ chatBtnLabel }}</span>
+    </button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;startRoute&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;how-it-works&quot;,&quot;what-we-measure&quot;,&quot;testing&quot;,&quot;solutions&quot;,&quot;products&quot;,&quot;results&quot;,&quot;approval&quot;,&quot;confirmation&quot;,&quot;book&quot;,&quot;science&quot;,&quot;about&quot;,&quot;faq&quot;,&quot;contact&quot;,&quot;privacy&quot;,&quot;terms&quot;,&quot;disclaimer&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Page&quot;},&quot;animate&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;logoIcon&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;swirl&quot;,&quot;hex&quot;],&quot;default&quot;:&quot;swirl&quot;,&quot;tsType&quot;:&quot;'hex'|'swirl'&quot;,&quot;section&quot;:&quot;Brand&quot;}}">
+const U = (id, w = 1000) => `https://images.unsplash.com/photo-${id}?w=${w}&q=80&auto=format&fit=crop`;
+const IMG = { dna: './assets/web/dna.jpg', cell: './assets/web/cell.jpg', mol: './assets/web/molecule.jpg', calm: './assets/web/calm.jpg', swim: './assets/web/swim.jpg', strong: './assets/web/strength.jpg', run: './assets/web/run.jpg' };
+const PH = { sea: [IMG.calm, '', ''], duo: [IMG.swim, '', ''], run: [IMG.run, '', ''], yoga: [IMG.strong, '', ''], shore: [IMG.mol, '', ''], cell: [IMG.cell, '', ''], dna: [IMG.dna, '', ''] };
+const A = './assessment.html';
+const AREAS = [
+  ['Sleep quality', 'Falling asleep, staying asleep and waking rested.', 'Asks about: how long it takes to fall asleep, night waking, how you feel on waking.'],
+  ['Energy', 'How steady your energy is through the day.', 'Asks about: afternoon dips, reliance on caffeine.'],
+  ['Focus and mental performance', 'Concentration, memory and mental clarity.', 'Asks about: holding focus, losing words or your train of thought.'],
+  ['Stress and recovery', 'How quickly you bounce back after hard days.', 'Asks about: recovery after training or heavy work, lingering soreness.'],
+  ['Activity and fitness', 'How often and how freely you move.', 'Asks about: training frequency, joint pain, old injuries.'],
+  ['Food and daily habits', 'Your routine and what you’ve already tried.', 'Asks about: eating patterns, programs and supplements tried.'],
+  ['Weight and metabolism', 'How your body responds to food and training.', 'Asks about: changes over the last year, fat around the middle.'],
+  ['Long-term health goals', 'The areas that matter most for healthy aging.', 'Asks about: your goals for the decades ahead.'],
+];
+const SOL = [
+  ['Weight and body composition', 'Fat loss while protecting lean muscle.', PH.run],
+  ['Recovery, injury, and joint', 'Recover faster and move freely.', PH.duo],
+  ['Sleep and cognition', 'Deeper sleep and clearer thinking.', PH.sea],
+  ['Longevity and vitality', 'Energy and resilience for the long run.', PH.shore],
+  ['Sexual health and hormones', 'Drive, libido and hormonal balance.', PH.cell],
+];
+const PKG = [
+  { k: 'womens-health', t: 'Women’s Health', img: IMG.calm, d: 'Balance hormones, support recovery and age well from the inside out.', pts: ['Facial aesthetics', 'Post-maternity recovery', 'Hormonal health', 'Anti-aging'],
+    hero: 'Science-backed. Personalized. Life-changing.', lead: 'We go beyond surface-level fixes to uncover the root causes of hormonal imbalance, skin aging and low energy, and build a plan that is uniquely yours.',
+    paths: [
+      { t: 'Anti-Aging', tl: 'Look younger. Feel younger. Age on your terms.', d: 'We help you slow biological aging and support radiant skin, energy and vitality from the inside out.', inc: ['Biological age and longevity markers', 'Inflammation and oxidative stress', 'Skin health and collagen production', 'Gut health and nutrient absorption'], gain: ['Smoother, healthier skin', 'More energy and mental clarity', 'Stronger immunity and resilience', 'A body that ages slower'], img: IMG.calm },
+      { t: 'Hormonal Health', tl: 'Balance your hormones. Reclaim your life.', d: 'We address the root causes of hormonal imbalance at every stage of life, from cycle to menopause and beyond.', inc: ['Pre and post menopause', 'Endometriosis and PCOS', 'Fertility and family planning', 'Thyroid and adrenal balance'], gain: ['Regulated cycles and fewer symptoms', 'Better mood, sleep and energy', 'Healthy libido and intimacy', 'Support for your fertility journey'], img: IMG.swim },
+      { t: 'Radiance Reset', tag: '6-MONTH JOURNEY', tl: 'The complete transformation. Inside and out.', d: 'Our most comprehensive program combines Anti-Aging and Hormonal Health in a guided six-month journey.', inc: ['Advanced testing and root-cause analysis', 'Personalized nutrition protocols', 'Targeted supplement plan', '1:1 coaching and lifestyle guidance'], gain: ['Visible results, lasting energy', 'Hormone balance and inner glow', 'Confidence in your body and skin', 'A life that feels like you again'], img: IMG.strong },
+    ] },
+  { k: 'longevity', t: 'Longevity & Healthspan', img: IMG.dna, d: 'Extend your healthspan and slow aging at the cellular level.', pts: ['Biological age reversal', 'Cellular health and repair', 'Energy and vitality', 'Immune function'],
+    hero: 'More years. Better years.', lead: 'We measure how you are aging, then target the systems that move the needle: cellular repair, metabolic health, inflammation and immunity.',
+    paths: [
+      { t: 'Biological Age', tl: 'Know your real age. Then lower it.', d: 'Advanced markers show how fast you are aging and which factors are accelerating it.', inc: ['Biological age testing', 'Inflammation and oxidative stress', 'Metabolic markers'], gain: ['A clear baseline', 'Targets that matter', 'Progress you can measure'], img: IMG.dna },
+      { t: 'Cellular Health & Repair', tl: 'Support the systems that keep you young.', d: 'Nutrition, targeted supplements and lifestyle strategies that support repair at the cellular level.', inc: ['Mitochondrial support', 'Detoxification pathways', 'Sleep and recovery'], gain: ['Steadier energy', 'Faster recovery', 'Stronger immunity'], img: IMG.cell },
+      { t: 'Vitality Program', tag: '6-MONTH JOURNEY', tl: 'Energy and resilience for the long run.', d: 'A guided program that combines testing, a personalized plan and 1:1 coaching.', inc: ['Advanced testing', 'Personalized nutrition and supplements', '1:1 coaching', 'Ongoing tracking'], gain: ['More energy and vitality', 'A stronger immune system', 'A plan that grows with you'], img: IMG.run },
+    ] },
+  { k: 'weight-loss', t: 'Weight Loss', img: IMG.run, d: 'Reach your ideal weight by optimizing metabolism, balancing hormones and improving gut health.', pts: ['Improved body composition', 'Boosted metabolism', 'Gut health', 'Hormonal health'],
+    hero: 'Lose fat. Keep muscle. Keep it off.', lead: 'Weight is a signal, not the problem. We look at metabolism, hormones and gut health so the change lasts.',
+    paths: [
+      { t: 'Metabolic Reset', tl: 'Understand why your weight will not move.', d: 'Testing that shows how your body handles food, energy and stress.', inc: ['Metabolic and blood-sugar markers', 'Thyroid and hormone profile', 'Gut health'], gain: ['A clear reason', 'A plan built on your numbers'], img: IMG.mol },
+      { t: 'Body Composition', tl: 'Lose fat, protect lean muscle.', d: 'Nutrition and training built around your composition, not the scale.', inc: ['Body composition scan', 'Nutrition protocol', 'Training guidance'], gain: ['Better shape, not just a lower number', 'More strength and energy'], img: IMG.strong },
+      { t: 'Sustained Program', tag: '6-MONTH JOURNEY', tl: 'Results that stay.', d: 'A guided program with testing, a personalized plan and coaching so new habits hold.', inc: ['Advanced testing', 'Nutrition and supplements', '1:1 coaching', 'Ongoing adjustments'], gain: ['Lasting change', 'Confidence in your body'], img: IMG.run },
+    ] },
+  { k: 'cognitive', t: 'Cognitive Performance', img: IMG.cell, d: 'Enhance focus, memory and mental clarity by supporting brain health and nervous-system regulation.', pts: ['Hormonal health', 'Gut health', 'Neurotransmitter profile', 'Vagus-nerve optimisation'],
+    hero: 'Think clearer. Focus longer.', lead: 'Mental performance depends on hormones, gut health, neurotransmitters and how well your nervous system recovers. We look at all of them.',
+    paths: [
+      { t: 'Focus & Clarity', tl: 'Hold attention when it matters.', d: 'Identify what is draining your focus and address it at the root.', inc: ['Neurotransmitter profile', 'Sleep and recovery', 'Blood-sugar stability'], gain: ['Sharper focus', 'Fewer mental dips'], img: IMG.cell },
+      { t: 'Brain & Gut', tl: 'A calmer gut, a clearer mind.', d: 'Gut health and inflammation shape mood and memory. We support both.', inc: ['Gut health', 'Inflammation markers', 'Nutrition protocol'], gain: ['Better mood', 'Steadier energy'], img: IMG.mol },
+      { t: 'Nervous System Reset', tl: 'Recover faster. Stress less.', d: 'Vagus-nerve and recovery strategies that improve how you handle pressure.', inc: ['Stress and recovery assessment', 'Breathing and recovery protocols', 'Sleep optimisation'], gain: ['Calmer baseline', 'Better sleep'], img: IMG.calm },
+    ] },
+  { k: 'athletic', t: 'Athletic Optimisation', img: IMG.strong, d: 'Improve performance, build strength and mobility, reduce inflammation and recover faster.', pts: ['Mobility and strength', 'Reduced inflammation', 'Optimal recovery', 'Nutrition and training optimisation'],
+    hero: 'Train harder. Recover smarter.', lead: 'Performance is built in recovery. We measure inflammation, hormones and nutrition so your training actually lands.',
+    paths: [
+      { t: 'Performance Baseline', tl: 'Know what is holding you back.', d: 'Testing across hormones, inflammation and nutrient status.', inc: ['Hormone and recovery markers', 'Inflammation', 'Nutrient status'], gain: ['Clear priorities', 'Targets you can train toward'], img: IMG.strong },
+      { t: 'Recovery & Mobility', tl: 'Move freely. Bounce back faster.', d: 'Protocols that reduce inflammation and support joints and soft tissue.', inc: ['Recovery protocol', 'Mobility plan', 'Sleep optimisation'], gain: ['Less soreness', 'Fewer setbacks'], img: IMG.run },
+      { t: 'Peak Program', tag: '6-MONTH JOURNEY', tl: 'Nutrition, training and recovery, aligned.', d: 'A guided program for athletes who want everything working together.', inc: ['Advanced testing', 'Nutrition and supplement plan', 'Training strategy', '1:1 coaching'], gain: ['Measurable performance gains', 'Consistency through the season'], img: IMG.swim },
+    ] },
+  { k: 'family', t: 'Family Health', img: IMG.swim, d: 'Personalized insights to better understand and support conditions like autism and ADHD.', pts: ['Autism', 'ADHD'],
+    hero: 'Understand. Support. Together.', lead: 'We help families understand the biology behind autism and ADHD and build supportive, practical plans with qualified professionals.',
+    paths: [
+      { t: 'Autism Support', tl: 'Insight that leads to support.', d: 'Testing and guidance that help you understand nutrition, gut health and sensory needs.', inc: ['Nutrition and gut health', 'Nutrient status', 'Sleep support'], gain: ['A clearer picture', 'Practical daily support'], img: IMG.swim },
+      { t: 'ADHD Support', tl: 'Focus, sleep and calm.', d: 'Personalized strategies that support attention, sleep and regulation.', inc: ['Sleep and routine', 'Nutrition protocol', 'Nervous-system regulation'], gain: ['Better routines', 'Calmer days'], img: IMG.calm },
+      { t: 'Family Plan', tag: 'GUIDED', tl: 'One plan for the whole household.', d: 'Coaching and follow-up for parents and children together.', inc: ['Family consultation', 'Shared nutrition plan', 'Ongoing follow-up'], gain: ['Confidence as a family', 'Support that lasts'], img: IMG.run },
+    ] },
+];
+const HOW = [{ t: 'Advanced testing', d: 'DNA and functional testing where it adds clarity.' }, { t: 'Personalized plan', d: 'Nutrition, targeted supplements and lifestyle.' }, { t: 'Expert coaching', d: 'Guidance and support from qualified professionals.' }, { t: 'Real results', d: 'Tracked over time and adjusted as you change.' }];
+const ROUTES = [
+  ['', 'Home'], ['how-it-works', 'How it works'], ['what-we-measure', 'What we measure'], ['testing', 'Testing & diagnostics'], ['solutions', 'Optimization solutions'],
+  ['products', 'Products & protocols'], ['packages', 'Packages'], ['results', 'Your results'], ['approval', 'Approval form'], ['confirmation', 'Confirmation'], ['book', 'Book a consultation'],
+  ['science', 'Science & methodology'], ['about', 'About us'], ['faq', 'FAQ'], ['contact', 'Contact us'], ['privacy', 'Privacy policy'], ['terms', 'Terms & conditions'], ['disclaimer', 'Medical disclaimer'],
+];
+const cta = (t, c = 'Start your assessment', h = A, d = 'Free, anonymous and about three minutes. No account needed.') => ({ type: 'cta', tone: 'sea', t, d, cta: c, ctaHref: h });
+const img = (ph) => ({ img: ph[0], credit: ph[1], href: ph[2] });
+
+const PAGES = {
+  '': [
+    { type: 'video', k: 'BODY IQ ANALYTICS', t: 'Decode your body. Optimize what matters most.', d: 'Advanced DNA and functional testing, personalized nutrition and targeted supplements, guided by qualified professionals. Start with a short assessment or explore our packages.', cta: 'Start your assessment', ctaHref: A, cta2: 'Explore packages', cta2Href: '#/packages' },
+    { type: 'cards', k: 'YOUR GOALS', t: 'What would you like to improve?', min: '200px', items: [
+      { t: 'Energy', d: 'Steady energy from morning to night.', ...img(PH.run), link: 'Start here', linkHref: A },
+      { t: 'Sleep', d: 'Fall asleep faster, wake up restored.', ...img(PH.sea), link: 'Start here', linkHref: A },
+      { t: 'Recovery', d: 'Bounce back faster after hard days.', ...img(PH.duo), link: 'Start here', linkHref: A },
+      { t: 'Body composition', d: 'Lose fat, keep muscle.', ...img(PH.shore), link: 'Start here', linkHref: A },
+    ] },
+    { type: 'journey' },
+    { type: 'story' },
+    { type: 'cards', k: 'WHAT WE ASSESS', t: 'Eight areas. One clear picture.', d: 'Every answer feeds one of these areas. Your lowest three become your priorities.', min: '270px', items: AREAS.map((a, i) => ({ n: '0' + (i + 1), t: a[0], d: a[1] })) },
+    { type: 'results', tone: 'dark', k: 'WHAT YOU RECEIVE', t: 'Your priorities, explained.', d: 'An illustrative preview of the results page.', cta: 'See a full example', ctaHref: '#/results' },
+    { type: 'split', k: 'WHY BODY IQ', t: 'Clear rules. Professional review.', ...img(PH.shore), ar: '4/5', bullets: [
+      { t: 'Transparent methodology', d: 'Simple, published rules decide your priorities. No black box.' },
+      { t: 'Grounded in research', d: 'Questions are built on established health research.' },
+      { t: 'Professional review', d: 'Qualified professionals review requests before anything goes ahead.' },
+    ], cta: 'Our methodology', ctaHref: '#/science' },
+    { type: 'paths', k: 'PACKAGES', t: 'Optimizing what matters most.', d: 'Six focused packages powered by advanced testing, personalized nutrition and targeted supplements.', min: '280px', items: PKG.slice(0, 3).map((p, i) => ({ n: String(i + 1).padStart(2, '0'), t: p.t, d: p.d, img: p.img, cta: 'Explore', href: '#/pkg-' + p.k, ar: '4/3' })), cta: 'See all packages', ctaHref: '#/packages' },
+    { type: 'faq', k: 'QUICK FAQS', t: 'Good questions.', items: [
+      { q: 'Is this a diagnosis?', a: 'No. Your results provide guidance on what to focus on. They do not diagnose any condition.' },
+      { q: 'What happens after the assessment?', a: 'You see your top three priorities and a short list of options. You can choose one and request a review.' },
+      { q: 'How is my information handled?', a: 'Your answers stay anonymous until you choose to share your email. See our Privacy Policy for details.' },
+    ] },
+    cta('Find your starting point in a few minutes.'),
+  ],
+  'how-it-works': [
+    { type: 'hero', layout: 'center', k: 'HOW IT WORKS', t: 'From your answers to your next step.', d: 'Here’s what to expect, from the first question to booking a consultation.', cta: 'Start your assessment', ctaHref: A },
+    { type: 'split', k: 'BEFORE YOU START', t: 'What you’ll need.', ...img(PH.shore), ar: '4/3', bullets: [
+      { t: 'A few quiet minutes', d: 'The assessment takes about three minutes.' }, { t: 'Your height and weight', d: 'Used to put your answers in context.' },
+      { t: 'Any current medications', d: 'Some options depend on what you already take.' },
+    ] },
+    { type: 'steps', k: 'THE PROCESS', t: 'Five clear stages.', items: [
+      { t: 'Complete the assessment', d: 'Questions about your goals, habits and health information.' },
+      { t: 'Understand your results', d: 'Your top three priorities, and what each one means.' },
+      { t: 'Explore solutions', d: 'Options linked directly to your answers, filtered by eligibility.' },
+      { t: 'Request a review', d: 'A short form with only the information needed, and why we need it.' },
+      { t: 'Next steps', d: 'Updates arrive by email or SMS. Booking opens once your review is complete.' },
+    ] },
+    { type: 'notice', layout: 'band', tone: 'deep', t: 'You stay in control', d: 'Nothing is shared until you enter your email and agree to our terms. You can review previous answers at any time during the assessment.' },
+    cta('Ready when you are.'),
+  ],
+  'what-we-measure': [
+    { type: 'hero', k: 'WHAT WE MEASURE', t: 'What your answers can tell us, and what they can’t.', d: 'The assessment gives questionnaire-based insights. Some measurements need clinical tests.' },
+    { type: 'cards', layout: 'feature', min: '300px', items: [
+      { tag: 'QUESTIONNAIRE', t: 'Questionnaire-based insights', d: 'How you sleep, feel, move and recover, based on your own answers. Fast, free and useful for setting priorities.' },
+      { tag: 'CLINICAL', t: 'Measurements that need testing', d: 'Hormones, blood markers and body composition need a test to measure. We’ll suggest one if your answers point to it.', link: 'Testing & diagnostics', linkHref: '#/testing' },
+    ] },
+    { type: 'cards', layout: 'list', tone: 'dark', k: 'HEALTH AREAS', t: 'The eight areas we look at.', min: '260px', items: AREAS.map((a, i) => ({ n: '0' + (i + 1), t: a[0], d: a[1], meta: a[2] })) },
+    { type: 'split', k: 'HOW AREAS CONNECT', t: 'Your body works as a system.', ...img(PH.duo), ar: '4/3', flip: true, bullets: [
+      { t: 'Sleep → Recovery', d: 'Short or broken sleep slows how fast you bounce back.' },
+      { t: 'Recovery → Energy', d: 'Slow recovery shows up as low energy the next day.' },
+      { t: 'Energy → Activity', d: 'Low energy makes it harder to stay active, and the cycle repeats.' },
+    ] },
+    { type: 'notice', tone: 'foam', t: 'Assessment limitations', d: 'Your answers can point to areas worth attention. They cannot confirm a condition. Anything that needs further evaluation is referred to a qualified professional.' },
+    cta('Explore your health priorities.', 'Explore your priorities'),
+  ],
+  testing: [
+    { type: 'hero', layout: 'wide', k: 'TESTING & DIAGNOSTICS', t: 'Go deeper with the right test.', d: 'When your answers point to it, a test can give you real numbers to start from.' },
+    { type: 'cards', layout: 'feature', k: 'AVAILABLE TESTS', t: 'Tests we may recommend.', d: 'Final list, prices and timing to be confirmed by BODY IQ.', min: '260px', items: [
+      { tag: 'AT HOME', confirm: true, t: 'Baseline blood panel', d: 'A broad view of heart, metabolic and nutrient markers.', link: 'View test', linkHref: '#/testing' },
+      { tag: 'AT HOME', confirm: true, t: 'Hormone panel', d: 'Key markers linked to energy, drive and balance.', link: 'View test', linkHref: '#/testing' },
+      { tag: 'IN CLINIC', confirm: true, t: 'Body composition scan', d: 'Fat, lean mass and bone, region by region.', link: 'View test', linkHref: '#/testing' },
+    ] },
+    { type: 'cards', tone: 'dark', k: 'ON EACH TEST PAGE', t: 'Everything you need to know first.', min: '220px', items: [
+      { n: '01', t: 'What it measures', d: 'The markers included, in plain language.' }, { n: '02', t: 'Who it may suit', d: 'The goals and priorities it relates to.' },
+      { n: '03', t: 'How it’s performed', d: 'At home or in clinic, and how long it takes.' }, { n: '04', t: 'How to prepare', d: 'Fasting, timing or anything to avoid beforehand.' },
+    ] },
+    { type: 'split', k: 'AFTER TESTING', t: 'Results you can understand.', ...img(PH.run), ar: '4/3', bullets: [
+      { t: 'Clear explanations', d: 'What each result means for your priorities.' }, { t: 'Follow-up options', d: 'A review or consultation, where available.' },
+    ] },
+    cta('Not sure which test is right?', 'Request a review', '#/approval', 'Start with the assessment, or ask our team.'),
+  ],
+  solutions: [
+    { type: 'hero', layout: 'flip', k: 'OPTIMIZATION SOLUTIONS', t: 'From priorities to practical next steps.', d: 'Each priority links to one or two solutions. You only see the ones you’re eligible for.', cta: 'Find my starting point', ctaHref: A },
+    { type: 'cards', k: 'SOLUTIONS BY GOAL', t: 'Organized around what you want to improve.', min: '220px', items: SOL.map(s => ({ t: s[0], d: s[1], ...img(s[2]), ar: '4/5', tag: 'REVIEW REQUIRED', link: 'Request a review', linkHref: '#/approval' })) },
+    { type: 'steps', layout: 'row', tone: 'dark', k: 'ON EACH SOLUTION', t: 'Clear before you commit.', items: [
+      { n: '01', t: 'What it is', d: 'Its purpose and what’s included.' }, { n: '02', t: 'Who it may suit', d: 'The priorities and goals it relates to.' },
+      { n: '03', t: 'Requirements', d: 'Eligibility, and whether approval is needed.' }, { n: '04', t: 'Ongoing support', d: 'Follow-up included, where confirmed.' },
+    ] },
+    cta('Let your answers choose the shortlist.', 'Find my starting point'),
+  ],
+  products: [
+    { type: 'hero', layout: 'center', k: 'PRODUCTS & PROTOCOLS', t: 'Products and programs, clearly explained.', d: 'Organized by category, with eligibility and approved usage information on every page.' },
+    { type: 'cards', layout: 'list', k: 'CATEGORIES', t: 'Browse by category.', min: '220px', items: SOL.map((s, i) => ({ n: '0' + (i + 1), t: s[0], d: s[1], confirm: true, link: 'View category', linkHref: '#/products' })) },
+    { type: 'split', tone: 'dark', k: 'PRODUCT DETAIL PAGES', t: 'What every product page includes.', ...img(PH.yoga), ar: '1/1', ph: 'Product photo', bullets: [
+      { t: 'Name, description and purpose' }, { t: 'Ingredients or components' }, { t: 'Usage from a qualified source' },
+      { t: 'Eligibility and precautions' }, { t: 'Program steps, duration and support' }, { t: 'Approved pricing and next step' },
+    ] },
+    { type: 'notice', layout: 'band', tone: 'foam', t: 'No online checkout in Phase 1', d: 'Products are requested through a review or inquiry. Direct purchasing would need a separate agreement.' },
+    cta('Ask about a product.', 'Request a review', '#/approval'),
+  ],
+  results: [
+    { type: 'hero', k: 'YOUR RESULTS · EXAMPLE', t: 'Sara, here’s where to start.', d: 'Based on your answers, three areas need attention first. Here’s what they mean and what can help.' },
+    { type: 'results', tone: 'dark', k: 'TOP THREE PRIORITIES', t: 'Your priorities and suggested solutions.', d: 'Each priority links to one or two options, filtered by your eligibility.' },
+    { type: 'steps', layout: 'timeline', k: 'NEXT STEP', t: 'Choose a solution and request a review.', items: [
+      { t: 'Pick one solution', d: 'Tap any option above to continue.' }, { t: 'Complete a short form', d: 'Only what’s needed for review.' }, { t: 'Get the outcome by email', d: 'Then book a consultation if approved.' },
+    ] },
+    { type: 'notice', tone: 'deep', t: 'Results are guidance, not a diagnosis', d: 'They are based on your answers only. A qualified professional reviews any request before it goes ahead.' },
+  ],
+  approval: [
+    { type: 'hero', k: 'APPROVAL FORM', t: 'Request a review.', d: 'We only ask what’s needed to review this request.' },
+    { type: 'form', summary: 'Sleep and cognition', fields: [
+      { label: 'Are you currently taking any prescription medication?', kind: 'select', opts: ['No', 'Yes', 'Not sure'] },
+      { label: 'Have you used this type of protocol before?', kind: 'select', opts: ['Never', 'In the past', 'Currently'] },
+      { label: 'Anything the reviewer should know?', kind: 'area', ph: 'Optional' },
+    ], consents: ['I confirm the information I’ve given is accurate.', 'I agree that a qualified professional may review my answers to assess this request.'],
+    submit: 'Submit for review', submitHref: '#/confirmation', note: 'Your answers are sent securely and used only for this review.',
+    bullets: [
+      { t: 'Who reviews it', d: 'A qualified member of the BODY IQ clinical team.' }, { t: 'How you’ll hear back', d: 'By email, with SMS updates if you opted in.' },
+      { t: 'Possible outcomes', d: 'Approved, more information needed, or not suitable right now.' },
+    ] },
+  ],
+  confirmation: [
+    { type: 'success', rows: [{ k: 'Request', v: 'Sleep and cognition' }, { k: 'Submitted', v: 'Today' }, { k: 'Reference', v: 'BIQ-0000' }],
+      items: [{ n: '01', t: 'Review', d: 'Our team reviews your request.' }, { n: '02', t: 'Decision', d: 'You’ll receive the outcome by email.' }, { n: '03', t: 'Book', d: 'If approved, book your consultation.' }] },
+  ],
+  book: [
+    { type: 'hero', layout: 'flip', k: 'BOOK A CONSULTATION', t: 'Talk it through with our team.', d: 'Duration and pricing to be confirmed by BODY IQ.' },
+    { type: 'cards', min: '220px', items: [
+      { tag: 'WHO', confirm: true, t: 'A qualified professional', d: 'From the BODY IQ clinical team.' }, { tag: 'PURPOSE', t: 'Your plan, explained', d: 'Your priorities, your request and your questions.' },
+      { tag: 'DURATION', confirm: true, t: 'Length and price', d: 'Shown here once confirmed.' },
+    ] },
+    { type: 'booking' },
+    { type: 'cards', tone: 'dark', min: '260px', items: [
+      { t: 'How to prepare', d: 'Have your results, medication list and any recent test results ready.' },
+      { t: 'Cancelling or rescheduling', d: 'Use the link in your confirmation email. Policy to be confirmed.', confirm: true },
+    ] },
+  ],
+  science: [
+    { type: 'hero', layout: 'wide', k: 'SCIENCE & METHODOLOGY', t: 'How we turn answers into priorities.', d: 'Simple rules, clear limits, and professional review at every step.' },
+    { type: 'steps', layout: 'timeline', k: 'THE METHOD', t: 'Rules you can follow.', items: [
+      { t: 'Every answer counts', d: 'Each answer adds points to one health area.' }, { t: 'Areas are ranked', d: 'We rank all areas by score.' },
+      { t: 'Top three become priorities', d: 'The areas that need the most attention lead.' }, { t: 'Linked to solutions', d: 'Each priority links to one or two options, after eligibility rules.' },
+    ] },
+    { type: 'split', k: 'ASSESSMENT DEVELOPMENT', t: 'Who built it, and on what basis.', ...img(PH.shore), ar: '4/3', bullets: [
+      { t: 'Developed with qualified professionals', d: 'Names and credentials to be confirmed.' }, { t: 'Based on established research', d: 'References listed below once confirmed.' },
+      { t: 'Professional review', d: 'Rules recommend. People approve.' },
+    ] },
+    { type: 'cards', layout: 'list', tone: 'dark', k: 'SCIENTIFIC REFERENCES', t: 'Sources behind the methodology.', min: '260px', items: [1, 2, 3].map(n => ({ n: 'Ref ' + n, t: 'Reference to be supplied', d: 'Author, title, journal, year.', confirm: true })) },
+    { type: 'notice', layout: 'band', tone: 'deep', t: 'Limitations and ongoing review', d: 'The assessment can point to priorities but cannot establish a diagnosis. Questions, rules and content are reviewed regularly and updated as evidence changes.' },
+  ],
+  about: [
+    { type: 'hero', layout: 'center', k: 'ABOUT US', t: 'Built to make health easier to understand.', d: 'Why BODY IQ exists, and how we work.' },
+    { type: 'split', k: 'THE BODY IQ STORY', t: 'Too much advice. Not enough clarity.', d: 'BODY IQ was created to give people one clear place to start, based on their own answers. Final story to be supplied.', ...img(PH.duo), ar: '4/3', bullets: [] },
+    { type: 'split', tone: 'dark', flip: true, k: 'MISSION', t: 'Preventive health for every body.', d: 'We help people act early, with a clear focus on healthy longevity.', ...img(PH.sea), ar: '4/3', bullets: [] },
+    { type: 'cards', k: 'THE TEAM', t: 'The people behind BODY IQ.', d: 'Photos, names, roles and verified qualifications to be confirmed.', min: '200px', items: [1, 2, 3, 4].map(n => ({ t: 'Name Surname', d: 'Role · qualification', img: '', ph: 'Portrait', ar: '4/5', confirm: true, forceImg: true })) },
+    { type: 'cards', layout: 'feature', tone: 'shell', k: 'OUR APPROACH', t: 'What you can expect from us.', min: '220px', items: [
+      { t: 'Transparency', d: 'Clear rules and honest limits.' }, { t: 'Privacy', d: 'Your data is handled with care.' }, { t: 'Ongoing support', d: 'We’re here after your results too.' },
+    ] },
+    cta('Start the assessment, or talk to us.', 'Start your assessment'),
+  ],
+  faq: [
+    { type: 'hero', k: 'FAQ', t: 'Questions, answered.', d: 'Can’t find what you need? Contact our team.', cta: 'Contact us', ctaHref: '#/contact' },
+    { type: 'faq', items: [
+      { group: 'ASSESSMENT', q: 'Who is it for?', a: 'Adults who want to understand what to focus on first for their health.' },
+      { q: 'What information is required?', a: 'Your goals, habits and some health information. No email until your results are ready.' },
+      { q: 'Can I change my answers?', a: 'Yes. You can go back and review previous answers at any time.' },
+      { group: 'RESULTS', q: 'What do my results mean?', a: 'They show the three areas that need attention first, with a plain-language explanation.' },
+      { q: 'Are they a diagnosis?', a: 'No. Results are guidance only.' },
+      { q: 'Why were these priorities selected?', a: 'Your answers add points to each area. The three that need the most attention become your priorities.' },
+      { group: 'SOLUTIONS AND TESTING', q: 'How are options selected?', a: 'Each priority links to one or two options. Options you’re not eligible for are never shown.' },
+      { q: 'Is approval required?', a: 'For some options, yes. A qualified professional reviews a short form first.' },
+      { group: 'BOOKING', q: 'How do I book or reschedule?', a: 'Use the booking page, or the link in your confirmation email.' },
+      { group: 'PRIVACY', q: 'Who can access my information?', a: 'Only the BODY IQ team and the services that process it for us. See our Privacy Policy.' },
+      { q: 'How do I request deletion?', a: 'Contact us and we’ll delete your data, as described in our Privacy Policy.' },
+    ] },
+  ],
+  contact: [
+    { type: 'hero', layout: 'flip', k: 'CONTACT US', t: 'We’re here to help.', d: 'Questions about the assessment, your results or a request.' },
+    { type: 'form', fields: [
+      { label: 'Name', kind: 'input', type: 'text' }, { label: 'Email', kind: 'input', type: 'email' },
+      { label: 'Reason for contact', kind: 'select', opts: ['Assessment', 'Results', 'A request', 'Booking', 'Privacy', 'Other'] },
+      { label: 'Message', kind: 'area', ph: 'How can we help?' },
+    ], consents: [], submit: 'Send message', submitHref: '#/contact', note: 'Please don’t include sensitive medical details in general inquiries.',
+    bullets: [
+      { t: 'Email', d: 'To be confirmed' }, { t: 'Phone', d: 'To be confirmed' }, { t: 'Location and hours', d: 'If there is a physical facility.' },
+      { t: 'Quick links', d: 'Answers to common questions.', link: 'FAQ', href: '#/faq' }, { t: 'Book a consultation', d: 'Talk to our team.', link: 'Book', href: '#/book' },
+    ] },
+  ],
+  privacy: [
+    { type: 'hero', layout: 'center', k: 'LEGAL', t: 'Privacy policy', d: 'How BODY IQ collects, uses and protects your information.' },
+    { type: 'legal', blocks: [
+      { h: 'What we collect', p: 'Assessment answers, contact details you choose to share, and basic site usage.' },
+      { h: 'Why we need it', p: 'To generate your results, review requests and contact you about them.' },
+      { h: 'Who processes it', p: 'BODY IQ and its service providers, including GoHighLevel for contact management.' },
+      { h: 'How long we keep it', p: 'Anonymous sessions are deleted automatically if not completed. Other retention periods to be confirmed.' },
+      { h: 'Your rights', p: 'Access, correction and deletion of your data. Contact us to make a request.' },
+    ] },
+  ],
+  terms: [
+    { type: 'hero', layout: 'center', k: 'LEGAL', t: 'Terms & conditions', d: 'The rules for using the BODY IQ website and services.' },
+    { type: 'legal', blocks: [
+      { h: 'Using the website', p: 'Content is for information and education.' }, { h: 'Your responsibilities', p: 'Provide accurate information and keep your contact details up to date.' },
+      { h: 'Booking', p: 'Booking terms for consultations.' }, { h: 'Payment', p: 'Applicable payment terms, where approved.' }, { h: 'Cancellation', p: 'How to cancel or reschedule.' },
+    ] },
+  ],
+  disclaimer: [
+    { type: 'hero', layout: 'center', k: 'LEGAL', t: 'Medical disclaimer', d: 'The limits of the assessment and our educational content.' },
+    { type: 'legal', blocks: [
+      { h: 'Not a diagnosis', p: 'The assessment and results provide guidance only. They do not diagnose, treat or prevent any condition.' },
+      { h: 'Educational content', p: 'Information on this site is general and may not apply to your situation.' },
+      { h: 'Role of qualified professionals', p: 'Medical evaluation and treatment decisions are made by qualified professionals.' },
+      { h: 'In an emergency', p: 'Contact your local emergency services.' },
+    ] },
+  ],
+};
+PAGES.packages = [
+  { type: 'hero', layout: 'center', k: 'PACKAGES', t: 'Optimizing what matters most.', d: 'Six focused packages powered by advanced testing, personalized nutrition and targeted supplements. Each one starts with your assessment.', cta: 'Start your assessment', ctaHref: A, cta2: 'How it works', cta2Href: '#/how-it-works', heroImg: IMG.dna, chip: 'Six packages' },
+  { type: 'paths', k: 'CHOOSE YOUR FOCUS', t: 'Six packages. One clear starting point.', d: 'Your assessment ranks eight areas and points you to the package that fits. You can also choose directly.', min: '300px', items: PKG.map((p, i) => ({ n: String(i + 1).padStart(2, '0'), t: p.t, d: p.d, inc: p.pts, incLabel: 'FOCUS', img: p.img, cta: 'Explore ' + p.t, href: '#/pkg-' + p.k, ar: '4/3' })) },
+  { type: 'steps', layout: 'row', tone: 'dark', k: 'HOW WE WORK', t: 'Four steps, every package.', items: HOW },
+  cta('Not sure which package? Start with the assessment.'),
+];
+PKG.forEach(p => { PAGES['pkg-' + p.k] = [
+  { type: 'hero', k: p.t.toUpperCase(), t: p.hero, d: p.lead, cta: 'Start your assessment', ctaHref: A, cta2: 'Book a consultation', cta2Href: '#/book', heroImg: p.img, chip: p.t },
+  { type: 'paths', k: 'CHOOSE YOUR PATH', t: 'Three paths. Your journey.', d: 'Pick the path that fits where you are. Every path starts with testing and ends with a plan that is yours.', min: '300px', items: p.paths.map((x, i) => ({ n: String(i + 1).padStart(2, '0'), ...x, incLabel: 'WE LOOK AT', cta: 'Request a review', href: '#/approval', ar: '4/3' })) },
+  { type: 'steps', layout: 'row', tone: 'dark', k: 'OUR SCIENCE. YOUR ADVANTAGE.', t: 'How we work.', items: HOW },
+  { type: 'notice', layout: 'band', t: 'Reviewed by qualified professionals', d: 'Packages are personalized after your assessment and, where needed, a short review. Nothing is recommended without that step. Final inclusions and pricing to be confirmed by BODY IQ.' },
+  cta('Find your starting point.', 'Start your assessment', A, 'Free, anonymous and about three minutes. Your results point to the right package.'),
+]; });
+const HERO_IMG = { 'how-it-works': [IMG.swim, 'From answers to action'], 'what-we-measure': [IMG.cell, 'Eight health areas'], testing: [IMG.mol, 'Real numbers'], solutions: [IMG.strong, 'Matched to you'], products: [IMG.dna, 'Clearly explained'], results: [IMG.calm, 'Your top 3'], approval: [IMG.calm, 'Quick review'], book: [IMG.run, 'Talk to our team'], science: [IMG.dna, 'Clear rules'], about: [IMG.run, 'Preventive health'], faq: [IMG.cell, 'Answers'], contact: [IMG.swim, 'We’re here'] };
+Object.entries(HERO_IMG).forEach(([k, v]) => { const h = PAGES[k] && PAGES[k].find(x => x.type === 'hero'); if (h) { h.heroImg = v[0]; h.chip = v[1]; } });
+[['how-it-works', 'THE PROCESS', [IMG.calm, IMG.run, IMG.strong, IMG.cell, IMG.dna]],
+ ['testing', 'ON EACH TEST PAGE', [IMG.cell, IMG.dna, IMG.swim, IMG.calm]]].forEach(([p, k, imgs]) => {
+  const sec = PAGES[p].find(x => x.k === k); if (sec) { sec.type = 'scrolly'; sec.items.forEach((c, i) => { c.img = imgs[i % imgs.length]; c.tag = c.n ? '' : ''; }); }
+});
+{ const sec = PAGES['what-we-measure'].find(x => x.k === 'HOW AREAS CONNECT'); if (sec) { sec.type = 'scrolly'; sec.items = sec.bullets.map((b, i) => ({ t: b.t, d: b.d, img: [IMG.calm, IMG.swim, IMG.run][i] })); } }
+const hl = (t, dark) => { const ws = t.split(' ').filter(Boolean); if (!ws.length) return []; const dot = ws.findIndex((x, i) => i < ws.length - 1 && /[.?!]$/.test(x)); const from = dot >= 0 ? dot + 1 : Math.max(0, ws.length - (ws.length >= 5 ? 2 : 1)); const col = dark ? '#D2ECF2' : '#1A7A86'; return ws.map((x, i) => ({ w: x, c: i >= from ? col : 'inherit' })); };
+{ const ims = [IMG.calm, IMG.run, IMG.dna, IMG.swim, IMG.strong, IMG.mol, IMG.cell, IMG.run];
+  const home = PAGES[''].find(x => x.k === 'YOUR GOALS');
+  if (home) { home.type = 'rail'; home.t = 'What would you like to improve?'; home.items = AREAS.map((a, i) => ({ tag: 'Area ' + String(i + 1).padStart(2, '0'), t: a[0], d: a[1], img: ims[i] })); }
+  const sol = PAGES.solutions.find(x => x.k === 'SOLUTIONS BY GOAL');
+  if (sol) { sol.type = 'rail'; sol.items = SOL.map((s2, i) => ({ tag: 'Review required', t: s2[0], d: s2[1], img: s2[2][0], linkHref: '#/approval' })); }
+}
+const E1 = 'cubic-bezier(.16,1,.3,1)', E2 = 'cubic-bezier(.34,1.56,.64,1)', E3 = 'cubic-bezier(.65,0,.35,1)';
+const MOTION = {
+  blurRise: { ez: E1, wd: 900, ws: 40, rd: 900, rs: 70, word: [{ opacity: 0, transform: 'translateY(0.3em)' }, { opacity: 1, transform: 'none' }], reveal: [{ opacity: 0, transform: 'translateY(22px)' }, { opacity: 1, transform: 'none' }], img: [{ opacity: 0, transform: 'translateY(22px)' }, { opacity: 1, transform: 'none' }], out: 'translateY(6px)' },
+  slideLeft: { ez: E1, wd: 1000, ws: 70, rd: 1100, rs: 110, word: [{ opacity: 0, transform: 'translateX(-0.8em)' }, { opacity: 1, transform: 'none' }], reveal: [{ opacity: 0, transform: 'translateX(-70px)' }, { opacity: 1, transform: 'none' }], img: [{ clipPath: 'inset(0 100% 0 0 round 28px)' }, { clipPath: 'inset(0 0 0 0 round 28px)' }], out: 'translateX(-24px)' },
+  scaleIn: { ez: E1, wd: 1000, ws: 55, rd: 1000, rs: 80, word: [{ opacity: 0, transform: 'scale(.55)' }, { opacity: 1, transform: 'none' }], reveal: [{ opacity: 0, transform: 'scale(.9)' }, { opacity: 1, transform: 'none' }], img: [{ clipPath: 'circle(0% at 50% 50%)' }, { clipPath: 'circle(80% at 50% 50%)' }], out: 'scale(.97)' },
+  clipUp: { ez: E3, wd: 900, ws: 60, rd: 1000, rs: 90, word: [{ clipPath: 'inset(100% 0 0 0)', transform: 'translateY(.35em)' }, { clipPath: 'inset(0 0 0 0)', transform: 'none' }], reveal: [{ opacity: 0, clipPath: 'inset(40% 0 0 0)', transform: 'translateY(30px)' }, { opacity: 1, clipPath: 'inset(0 0 0 0)', transform: 'none' }], img: [{ clipPath: 'inset(100% 0 0 0 round 28px)' }, { clipPath: 'inset(0 0 0 0 round 28px)' }], out: 'translateY(-14px)' },
+  flip: { ez: E1, wd: 1100, ws: 70, rd: 1200, rs: 100, word: [{ opacity: 0, transform: 'perspective(600px) rotateX(-85deg)', transformOrigin: '50% 100%' }, { opacity: 1, transform: 'perspective(600px) rotateX(0)', transformOrigin: '50% 100%' }], reveal: [{ opacity: 0, transform: 'perspective(1000px) rotateX(16deg) translateY(40px)' }, { opacity: 1, transform: 'none' }], img: [{ opacity: 0, transform: 'perspective(1400px) rotateY(-22deg) scale(.94)' }, { opacity: 1, transform: 'none' }], out: 'perspective(1000px) rotateX(4deg)' },
+  tilt: { ez: E1, wd: 1000, ws: 60, rd: 1100, rs: 90, word: [{ opacity: 0, transform: 'rotate(-8deg) translateY(.5em)', transformOrigin: '0 100%' }, { opacity: 1, transform: 'none', transformOrigin: '0 100%' }], reveal: [{ opacity: 0, transform: 'rotate(-2.5deg) translateY(50px)', transformOrigin: '0 0' }, { opacity: 1, transform: 'none', transformOrigin: '0 0' }], img: [{ opacity: 0, transform: 'scale(1.18) rotate(2deg)' }, { opacity: 1, transform: 'none' }], out: 'rotate(-.5deg) translateY(10px)' },
+  mask: { ez: E3, wd: 900, ws: 80, rd: 1100, rs: 120, word: [{ opacity: 0, transform: 'translateX(.4em)', filter: 'blur(4px)' }, { opacity: 1, transform: 'none', filter: 'blur(0)' }], reveal: [{ opacity: 1, clipPath: 'inset(0 100% 0 0)' }, { opacity: 1, clipPath: 'inset(0 0 0 0)' }], img: [{ clipPath: 'inset(0 0 0 100% round 28px)' }, { clipPath: 'inset(0 0 0 0 round 28px)' }], out: 'translateX(24px)' },
+  soft: { ez: 'ease-out', wd: 1600, ws: 90, rd: 1500, rs: 120, word: [{ opacity: 0, filter: 'blur(10px)' }, { opacity: 1, filter: 'blur(0)' }], reveal: [{ opacity: 0, filter: 'blur(12px)' }, { opacity: 1, filter: 'blur(0)' }], img: [{ opacity: 0, transform: 'scale(1.08)', filter: 'blur(12px)' }, { opacity: 1, transform: 'none', filter: 'blur(0)' }], out: 'none' },
+  pop: { ez: E2, wd: 800, ws: 50, rd: 900, rs: 70, word: [{ opacity: 0, transform: 'scale(.3) translateY(.3em)' }, { opacity: 1, transform: 'none' }], reveal: [{ opacity: 0, transform: 'scale(.82)' }, { opacity: 1, transform: 'none' }], img: [{ opacity: 0, transform: 'scale(.7)' }, { opacity: 1, transform: 'none' }], out: 'scale(.95)' },
+};
+const THEME_OF = {};
+const PROF = { who: 'Sara', pri: [
+  { t: 'Sleep quality', why: 'You take a long time to fall asleep and rarely wake rested.', sol: ['Sleep and cognition', 'Baseline blood panel'] },
+  { t: 'Stress and recovery', why: 'Soreness and fatigue last longer than they used to.', sol: ['Recovery, injury, and joint'] },
+  { t: 'Energy', why: 'Your energy drops in the afternoon and you rely on caffeine.', sol: ['Longevity and vitality'] },
+], bullets: [
+  { t: 'A personal summary', d: 'A short introduction based on your answers.' }, { t: 'Why each priority appeared', d: 'In plain language, linked to what you told us.' },
+  { t: 'One or two options per priority', d: 'Filtered by eligibility, so you only see what you can choose.' },
+] };
+const SEA_GRAD = `radial-gradient(90% 70% at 100% 100%, #D2ECF2 0%, #4C8C96B3 22%, #09606D00 55%), linear-gradient(165deg, #003547 0%, #054B55 55%, #09606D 100%)`;
+const CHAT_SYSTEM = `You are the BODY IQ assistant on the BODY IQ Analytics website. Answer briefly (2-4 sentences), warmly and plainly.
+Facts: BODY IQ offers a free, anonymous 24-question assessment (about 3 minutes). Answers score eight health areas: sleep quality, energy, focus and mental performance, stress and recovery, activity and fitness, food and daily habits, weight and metabolism, long-term health goals. The three lowest areas become the user's priorities. Each priority links to one or two solutions (Weight and body composition; Recovery, injury and joint; Sleep and cognition; Longevity and vitality; Sexual health and hormones). Users only see options they are eligible for. Some solutions need a short approval form reviewed by a qualified professional; the decision arrives by email, then booking opens. Tests that may be suggested: baseline blood panel, hormone panel, body composition scan. Email is only requested to unlock results. No online checkout in phase 1. Packages (each with three paths): Women's Health (Anti-Aging, Hormonal Health, Radiance Reset 6-month), Longevity & Healthspan, Weight Loss, Cognitive Performance, Athletic Optimisation, Family Health (autism and ADHD support). Pages: How it works, What we measure, Packages, Testing & diagnostics, Optimization solutions, Products & protocols, Science & methodology, About, FAQ, Contact, Book a consultation, Privacy, Terms, Medical disclaimer.
+Rules: never diagnose, never recommend a specific treatment or dose, never give medical advice — redirect those questions to a qualified professional. If you don't know a detail (prices, times, names), say it will be confirmed by BODY IQ. Do not invent facts.`;
+const TONES = {
+  light: { bg: 'transparent', fg: '#003547', mut: '#3E6B74', card: '#FFFFFF', cardBd: '#0B2A3314', kc: '#1A7A86', tagBg: '#D2ECF2', tagFg: '#075057' },
+  shell: { bg: '#FFFFFF', fg: '#003547', mut: '#3E6B74', card: '#FFFFFF99', cardBd: '#FFFFFFD9', kc: '#1A7A86', tagBg: '#D2ECF2', tagFg: '#075057' },
+  foam: { bg: '#D2ECF2', fg: '#003547', mut: '#075057', card: '#F7FAFB', cardBd: '#0B2A330F', kc: '#075057', tagBg: '#09606D', tagFg: '#FFFFFF' },
+  dark: { bg: 'transparent', fg: '#F7FAFB', mut: '#D2ECF2', card: '#FFFFFF14', cardBd: '#FFFFFF29', kc: '#D2ECF2', tagBg: '#D2ECF2', tagFg: '#075057' },
+  deep: { bg: '#075057', fg: '#F7FAFB', mut: '#D2ECF2', card: '#FFFFFF14', cardBd: '#FFFFFF26', kc: '#D2ECF2', tagBg: '#D2ECF2', tagFg: '#075057' },
+  sea: { bg: '#003547', fg: '#FFFFFF', mut: '#D2ECF2', card: '#FFFFFF14', cardBd: '#FFFFFF26', kc: '#D2ECF2', tagBg: '#D2ECF2', tagFg: '#075057' },
+};
+const readRoute = () => { const r = (location.hash || '').replace(/^#\/?/, ''); return PAGES[r] ? r : null; };
+
+const S_SCENES = [
+  { k: 'SIGNALS', t: 'Your body is always sending signals.', d: 'How you sleep, how you wake, how fast you recover. Most of us never learn to read them.' },
+  { k: 'EIGHT AREAS', t: 'They come from eight areas of your life.', d: 'Sleep, energy, focus, recovery, activity, habits, metabolism and long-term health.' },
+  { k: 'CONNECTED', t: 'When one slips, the others feel it.', d: 'Poor sleep drains energy. Stress slows recovery. Small gaps add up.' },
+  { k: 'THE PROBLEM', t: 'So most people guess.', d: 'Fifty tips. Ten supplements. No clear place to start.' },
+  { k: 'THE ANALYSIS', t: 'BODY IQ reads the signals.', d: '24 questions. Every answer adds points to one of the eight areas, and we rank them.' },
+  { k: 'YOUR PRIORITIES', t: 'And finds the three that matter most.', d: 'Your three lowest areas become your priorities. They lead everything that follows.' },
+  { k: 'YOUR PLAN', t: 'Then links them to a short list made for you.', d: 'Each priority connects to one or two solutions. You only see what you’re eligible for.' },
+];
+const S_CATS = ['Sleep', 'Energy', 'Focus', 'Recovery', 'Activity', 'Habits', 'Metabolism', 'Long-term'];
+const S_SCORES = [38, 52, 66, 46, 70, 61, 74, 58];
+const S_TOP = [0, 3, 1];
+const S_SLIP = [0, 1, 3];
+const S_N = 192;
+const S_COL = { mist: [145, 185, 193], shallows: [76, 140, 150], foam: [210, 236, 242], warn: [145, 185, 193], aqua: [210, 236, 242], salt: [247, 250, 251] };
+const S_JOURNEY = [
+  { k: 'MINUTE', n: '00', t: 'Start the analysis', d: 'No account, no email. Answer questions about how you sleep, move, eat and feel. Your answers stay anonymous.', ph: 'sea' },
+  { k: 'MINUTE', n: '03', t: 'See your top 3 priorities', d: 'Enter your email to unlock your results: your three priorities, explained in plain language.', ph: 'duo' },
+  { k: 'STEP', n: '03', t: 'Choose your solution', d: 'Pick from the short list linked to your priorities. Recommendation first, then you choose.', ph: 'run' },
+  { k: 'STEP', n: '04', t: 'A licensed provider reviews', d: 'Some solutions need a short approval form. We show you how long review takes, and you get the decision by email.', ph: 'yoga' },
+  { k: 'STEP', n: '05', t: 'Book your call', d: 'Book a call right here on the site. Confirmation and reminders come straight to you.', ph: 'shore' },
+  { k: 'MONTH', n: '03+', t: 'Track and adapt', d: 'Member accounts, your BODY IQ Score and progress over time are coming next, so your plan grows with you.', ph: 'sea2', later: true },
+];
+const S_U = id => `https://images.unsplash.com/photo-${id}?w=1200&q=80&auto=format&fit=crop`;
+const S_PH = { sea: ['./assets/web/calm.jpg', '', ''], duo: ['./assets/web/swim.jpg', '', ''], run: ['./assets/web/run.jpg', '', ''], yoga: ['./assets/web/strength.jpg', '', ''], shore: ['./assets/web/cell.jpg', '', ''], sea2: ['./assets/web/dna.jpg', '', ''] };
+const rnd = (i, s) => { const x = Math.sin(i * 127.1 + s * 311.7) * 43758.5453; return x - Math.floor(x); };
+const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+const smooth = t => t * t * (3 - 2 * t);
+const mix = (a, b, t) => a + (b - a) * t;
+
+class Component extends DCLogic {
+  storyRef = React.createRef(); canvasRef = React.createRef();
+  state = { scr: {}, h: 800, p: 0, js: 0, w: 1200, route: '', menu: false, faq: {}, sel: {}, cons: {}, phase: 'in', scrolled: false, chat: false, chatMsgs: [{ role: 'assistant', text: 'Hi, I’m the BODY IQ assistant. Ask me how the assessment works, what we measure, or what happens after your results.' }], chatInput: '', chatBusy: false };
+  videoRef = React.createRef();
+
+  componentDidMount() {
+    this.measure = () => { this.setState({ w: document.documentElement.clientWidth || innerWidth, h: innerHeight || 800 }); this.sizeCanvas(); };
+    this.measure(); addEventListener('resize', this.measure); this.syncLogo();
+    const start = readRoute() ?? (this.props.startRoute && PAGES[this.props.startRoute === 'home' ? '' : this.props.startRoute] ? (this.props.startRoute === 'home' ? '' : this.props.startRoute) : '');
+    this.setState({ route: start }, () => this.afterRoute());
+    this.onHash = () => { const r = readRoute(); if (r !== null && r !== this.state.route) this.go(r); };
+    addEventListener('hashchange', this.onHash);
+    this.t0 = performance.now();
+    this.lastY = -1; this.lastFrame = 0;
+    const loop = (now) => {
+      this.raf2 = requestAnimationFrame(loop);
+      if (document.hidden) return;
+      const y = window.scrollY || 0, moved = y !== this.lastY;
+      if (moved) { this.lastY = y; this.readScroll(); this.trackScrolly(); }
+      // canvas only while the story is on screen, capped at ~30fps
+      if (this.storyVisible && now - this.lastFrame > 32) { this.lastFrame = now; this.draw(moved); }
+    };
+    this.raf2 = requestAnimationFrame(loop);
+    this.poll = 0;
+    this.onScroll = () => { const sc = (window.scrollY || 0) > 20; if (sc !== this.state.scrolled) this.setState({ scrolled: sc }); };
+    addEventListener('scroll', this.onScroll, { passive: true });
+    this.vis = new IntersectionObserver(es => { es.forEach(e => { this.storyVisible = e.isIntersecting; }); }, { threshold: 0 });
+    this.watchStory = () => { const c = this.canvasRef.current; if (c && this.watched !== c) { if (this.watched) this.vis.unobserve(this.watched); this.watched = c; this.vis.observe(c); } if (!c) { this.storyVisible = false; this.watched = null; } };
+  }
+  componentWillUnmount() {
+    cancelAnimationFrame(this.raf2); if (this.vis) this.vis.disconnect();
+    removeEventListener('resize', this.measure); removeEventListener('hashchange', this.onHash); removeEventListener('scroll', this.onScroll);
+    clearTimeout(this.t1); clearTimeout(this.safety); clearTimeout(this.enterT); if (this.io) this.io.disconnect(); document.body.style.overflow = '';
+  }
+  go(r) {
+    this.setState({ phase: 'out' }); clearTimeout(this.t1);
+    this.t1 = setTimeout(() => { window.scrollTo({ top: 0, behavior: 'instant' }); this.setState({ route: r, phase: 'in', scr: {}, faq: {}, sel: {}, cons: {} }, () => this.afterRoute()); }, 220);
+  }
+  afterRoute() {
+    const key = this.state.route || 'home'; this.pendingEnter = key; this.tryEnter();
+  }
+  tryEnter() {
+    if (!this.pendingEnter) return;
+    const m = document.querySelector('main'); const ok = m && m.dataset.route === this.pendingEnter && (m.querySelector('h1') || m.querySelector('[data-reveal]'));
+    if (ok) { this.pendingEnter = null; this.enter(); } else { clearTimeout(this.enterT); this.enterT = setTimeout(() => this.tryEnter(), 60); }
+  }
+  enter() {
+    requestAnimationFrame(() => {
+      this.sizeCanvas(); this.readScroll(); this.watchStory(); this.lastY = -1;
+      document.querySelectorAll('video').forEach(v => { v.muted = true; v.defaultMuted = true; v.playsInline = true; v.setAttribute('muted', ''); v.play().catch(() => {}); });
+      
+      const ez0 = 'cubic-bezier(.16,1,.3,1)';
+      const th = { ...MOTION[THEME_OF[this.state.route] || 'blurRise'] };
+      const phone = this.state.w < 900;
+      if (phone) { th.wd = 650; th.ws = 28; th.rd = 600; th.rs = 60; th.reveal = [{ opacity: 0, transform: 'translateY(18px) scale(.985)' }, { opacity: 1, transform: 'none' }]; th.img = [{ opacity: 0, transform: 'translateY(16px) scale(.98)' }, { opacity: 1, transform: 'none' }]; }
+      document.querySelectorAll('[data-word]').forEach((el, i) => el.animate && el.animate(th.word, { duration: th.wd, delay: 120 + i * th.ws, easing: th.ez, fill: 'backwards' }));
+      document.querySelectorAll('[data-heroimg]').forEach(el => el.animate && el.animate(th.img, { duration: phone ? 900 : 1500, delay: phone ? 120 : 200, easing: th.ez, fill: 'backwards' }));
+      document.querySelectorAll('[data-fade]').forEach((el, i) => el.animate && el.animate(th.fade || th.reveal, { duration: th.rd, delay: (phone ? 320 : 500) + i * (phone ? 80 : 120), easing: th.ez, fill: 'backwards' }));
+      if (this.state.w >= 900) document.querySelectorAll('[data-float]').forEach((el, i) => { if (el._fl) return; el._fl = 1; el.animate && el.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(-12px)' }, { transform: 'translateY(0)' }], { duration: 5000 + i * 900, iterations: Infinity, easing: 'ease-in-out', delay: i * 400 }); });
+      document.querySelectorAll('[data-cue]').forEach(el => el.animate && el.animate([{ transform: 'scaleY(0)', transformOrigin: 'top' }, { transform: 'scaleY(1)', transformOrigin: 'top' }, { transform: 'scaleY(1)', transformOrigin: 'bottom', opacity: 0 }], { duration: 1800, iterations: Infinity }));
+      document.querySelectorAll('[data-pop]').forEach(el => el.animate && el.animate([{ transform: 'scale(.4)', opacity: 0 }, { transform: 'scale(1.08)', opacity: 1 }, { transform: 'scale(1)' }], { duration: 700, easing: 'cubic-bezier(.2,.8,.2,1)' }));
+      if ((this.props.animate ?? true) === false || (matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+      const ez = 'cubic-bezier(.16,1,.3,1)';
+      if (this.io) this.io.disconnect();
+      let lastT = 0, burst = 0;
+      const play = (el, i, initial) => { el.style.opacity = ''; el.style.transform = ''; el.style.clipPath = '';
+        const now = performance.now(); burst = now - lastT < 120 ? burst + 1 : 0; lastT = now;
+        const delay = initial ? (i % 5) * th.rs : Math.min(burst, 4) * th.rs;
+        if (el.animate) el.animate(th.reveal, { duration: th.rd, delay, easing: th.ez, fill: 'backwards' }); };
+      const els = [...document.querySelectorAll('[data-reveal]')];
+      els.forEach((el, i) => { el.style.transition = 'none'; el.style.transform = ''; el.style.clipPath = ''; el._ri = i; if (el.getBoundingClientRect().top < innerHeight * 0.95) play(el, i, true); else el.style.opacity = '0'; });
+      this.io = new IntersectionObserver(entries => { entries.forEach(en => { if (en.isIntersecting) { play(en.target, en.target._ri || 0); this.io.unobserve(en.target); } }); }, { rootMargin: phone ? '0px 0px -10% 0px' : '0px 0px -4% 0px', threshold: 0 });
+      els.filter(el => el.style.opacity === '0').forEach(el => { el._obs = 1; this.io.observe(el); });
+      this.check = null;
+      clearTimeout(this.safety); this.safety = setTimeout(() => { els.forEach(el => { if (el.style.opacity === '0') { el.style.opacity = ''; } }); }, 2500);
+    });
+  }
+  trackScrolly() {
+    const vh = innerHeight || 800, next = {};
+    const best = {};
+    document.querySelectorAll('[data-scr]').forEach(el => { const [a, b] = el.dataset.scr.split('-').map(Number); const r = el.getBoundingClientRect(); const d = Math.abs((r.top + r.height / 2) - vh * 0.45); if (next[a] === undefined) { next[a] = 0; best[a] = Infinity; } if (d < best[a]) { best[a] = d; next[a] = b; } });
+    const cur = this.state.scr || {};
+    if (Object.keys(next).some(k => next[k] !== cur[k])) this.setState({ scr: next });
+  }
+  parallax() {
+    const vh = innerHeight || 800;
+    document.querySelectorAll('[data-parallax]').forEach(el => { const r = el.parentElement.getBoundingClientRect(); if (r.bottom < -100 || r.top > vh + 100) return; const c = (r.top + r.height / 2 - vh / 2) / vh; const tgt = -c * (+el.dataset.parallax || 0.1) * 160; el._py = el._py === undefined ? tgt : el._py + (tgt - el._py) * 0.08; el.style.transform = 'translate3d(0,' + el._py.toFixed(2) + 'px,0)'; });
+  }
+  readScroll() {
+    const el = this.storyRef.current; if (!el) return;
+    const r = el.getBoundingClientRect(), vh = innerHeight || 800;
+    const p = clamp(-r.top / Math.max(1, r.height - vh));
+    this.p = p;
+    let js = 0;
+    S_JOURNEY.forEach((_, i) => { const e = document.getElementById('jstep-' + i); if (e && e.getBoundingClientRect().top < vh * 0.55) js = i; });
+    if (js !== this.state.js) this.setState({ js });
+  }
+  sizeCanvas() {
+    const c = this.canvasRef.current; if (!c) return;
+    const dpr = Math.min(this.state.w < 900 ? 1 : 1.5, devicePixelRatio || 1);
+    const W = c.clientWidth, H = c.clientHeight;
+    c.width = W * dpr; c.height = H * dpr; this.dpr = dpr; this.W = W; this.H = H;
+  }
+  box() {
+    const W = this.W, H = this.H, desk = W >= 900;
+    return desk ? { x: W * 0.46, y: H * 0.16, w: W * 0.48, h: H * 0.68, desk } : { x: W * 0.06, y: H * 0.46, w: W * 0.88, h: H * 0.44, desk };
+  }
+  layout(scene, i, b, time) {
+    const k = Math.floor(i / 24), j = i % 24;
+    if (scene === 0) {
+      const cols = 16, rows = 12, c = i % cols, r = Math.floor(i / cols);
+      return { x: b.x + (c + 0.5) / cols * b.w, y: b.y + (r + 0.5) / rows * b.h, rad: 1, col: S_COL.mist, a: 0.35 + 0.45 * (0.5 + 0.5 * Math.sin(time * 1.6 + i * 0.37)) };
+    }
+    if (scene === 1 || scene === 2) {
+      const cx = b.x + ((k % 4) + 0.5) / 4 * b.w, cy = b.y + (Math.floor(k / 4) + 0.42) / 2 * b.h;
+      const R = Math.min(b.w / 4, b.h / 2) * 0.3, ang = j * 2.39996 + time * 0.15, rr = Math.sqrt((j + 0.5) / 24) * R;
+      const slip = scene === 2 && S_SLIP.includes(k);
+      const wob = slip ? Math.sin(time * 3 + j) * 2.5 : 0;
+      return { x: cx + Math.cos(ang) * rr + wob, y: cy + Math.sin(ang) * rr, rad: 1, col: slip ? S_COL.warn : S_COL.shallows, a: slip ? 0.95 : (scene === 2 ? 0.45 : 0.85) };
+    }
+    if (scene === 3) {
+      const W = this.W, H = this.H;
+      return { x: W * (0.05 + 0.9 * rnd(i, 1)) + Math.sin(time * 0.9 + i) * 14, y: H * (0.08 + 0.84 * rnd(i, 2)) + Math.cos(time * 0.7 + i * 1.3) * 14, rad: 0.8, col: S_COL.mist, a: 0.5 };
+    }
+    if (scene === 4 || scene === 5) {
+      const colW = b.w / 8, cx = b.x + (k + 0.5) * colW, base = b.y + b.h * 0.82;
+      const barH = S_SCORES[k] / 100 * b.h * 0.72, row = Math.floor(j / 3), c3 = j % 3;
+      const top = scene === 5 && S_TOP.includes(k);
+      const dim = scene === 5 && !top;
+      return { x: cx + (c3 - 1) * Math.min(9, colW * 0.18), y: base - (row + 0.5) / 8 * barH, rad: top ? 1.25 : 1, col: top ? S_COL.aqua : S_COL.shallows, a: dim ? 0.18 : 0.95 };
+    }
+    const u = ((i / S_N) + time * 0.04) % 1;
+    const midY = b.y + b.h * 0.45, spread = b.h * 0.16 * (0.25 + 0.75 * Math.abs(Math.sin(u * Math.PI * 3)));
+    return { x: b.x + u * b.w, y: midY + (rnd(i, 3) - 0.5) * 2 * spread, rad: 0.9, col: u > 0.66 ? S_COL.aqua : S_COL.mist, a: 0.35 + 0.6 * Math.sin(u * Math.PI) };
+  }
+  storyDom() {
+    const p = this.p || 0; if (Math.abs(p - (this._lastP ?? -1)) < 0.0005) return; this._lastP = p;
+    const f = p * (S_SCENES.length - 1), cur = Math.round(f);
+    document.querySelectorAll('[data-scene]').forEach(el => { const i = +el.dataset.scene, d = f - i, op = clamp(1 - Math.abs(d) * 2.4); el.style.opacity = op.toFixed(3); el.style.transform = 'translateY(' + (-d * 60).toFixed(1) + 'px)'; });
+    if (cur !== this._lastCur) { this._lastCur = cur; document.querySelectorAll('[data-sdot]').forEach(el => { const on = +el.dataset.sdot === cur; el.style.height = on ? '26px' : '6px'; el.style.background = on ? '#D2ECF2' : '#FFFFFF40'; }); }
+    const pr = document.querySelector('[data-sprog]'); if (pr) pr.style.width = (p * 100).toFixed(1) + '%';
+  }
+  draw(moved) {
+    const c = this.canvasRef.current; if (!c) return;
+    if (moved) this.storyDom();
+    if (!this.W || c.width === 0 || c.clientWidth !== this.W || c.clientHeight !== this.H) this.sizeCanvas();
+    if (!this.W) return;
+    const ctx = c.getContext('2d'), dpr = this.dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, this.W, this.H);
+    const time = (performance.now() - this.t0) / 1000, p = this.p || 0;
+    const f = p * (S_SCENES.length - 1), si = Math.min(S_SCENES.length - 2, Math.floor(f)), fr = f - si;
+    const t = smooth(clamp((fr - 0.3) / 0.45));
+    const b = this.box(), base = Math.max(2.2, Math.min(this.W, this.H) / 280);
+    for (let i = 0; i < S_N; i++) {
+      const A = this.layout(si, i, b, time), B = this.layout(si + 1, i, b, time);
+      const tt = smooth(clamp(t * 1.25 - (i % 24) / 24 * 0.25));
+      const x = mix(A.x, B.x, tt), y = mix(A.y, B.y, tt), a = mix(A.a, B.a, tt), rad = mix(A.rad, B.rad, tt) * base;
+      const col = [0, 1, 2].map(n => Math.round(mix(A.col[n], B.col[n], tt)));
+      ctx.beginPath(); ctx.arc(x, y, rad, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${col[0]},${col[1]},${col[2]},${a})`; ctx.fill();
+    }
+    const scene = t < 0.5 ? si : si + 1, la = t < 0.5 ? 1 - t * 2 : (t - 0.5) * 2;
+    ctx.font = `500 ${b.desk ? 13 : 11}px "IBM Plex Sans", sans-serif`; ctx.textAlign = 'center';
+    if (scene === 1 || scene === 2) {
+      S_CATS.forEach((n, k) => {
+        const cx = b.x + ((k % 4) + 0.5) / 4 * b.w, cy = b.y + (Math.floor(k / 4) + 0.42) / 2 * b.h + Math.min(b.w / 4, b.h / 2) * 0.3 + 22;
+        const slip = scene === 2 && S_SLIP.includes(k);
+        ctx.fillStyle = slip ? `rgba(210,236,242,${la})` : `rgba(210,236,242,${la * (scene === 2 ? 0.55 : 0.9)})`; ctx.fillText(n, cx, cy);
+      });
+    }
+    if (scene === 4 || scene === 5) {
+      S_CATS.forEach((n, k) => {
+        const colW = b.w / 8, cx = b.x + (k + 0.5) * colW, base2 = b.y + b.h * 0.82, barH = S_SCORES[k] / 100 * b.h * 0.72;
+        const top = S_TOP.includes(k), dim = scene === 5 && !top;
+        ctx.fillStyle = `rgba(210,236,242,${la * (dim ? 0.3 : 0.9)})`;
+        ctx.fillText(b.desk ? n : n.slice(0, 5), cx, base2 + 22);
+        ctx.font = `500 ${b.desk ? 18 : 13}px "Space Grotesk", sans-serif`;
+        ctx.fillStyle = `rgba(247,250,251,${la * (dim ? 0.3 : 1)})`; ctx.fillText(String(S_SCORES[k]), cx, base2 - barH - 12);
+        if (scene === 5 && top) { const rank = S_TOP.indexOf(k) + 1; ctx.beginPath(); ctx.arc(cx, base2 - barH - 44, 13, 0, Math.PI * 2); ctx.fillStyle = `rgba(210,236,242,${la})`; ctx.fill(); ctx.fillStyle = `rgba(0,53,71,${la})`; ctx.font = `600 13px "Space Grotesk", sans-serif`; ctx.fillText(String(rank), cx, base2 - barH - 40); }
+        ctx.font = `500 ${b.desk ? 13 : 11}px "IBM Plex Sans", sans-serif`;
+      });
+    }
+    if (scene === 6) {
+      const midY = b.y + b.h * 0.45, labels = ['Your answers', 'Clear rules', 'Top 3 priorities', 'Your short list'];
+      labels.forEach((n, q) => {
+        const x = b.x + q / 3 * b.w;
+        ctx.beginPath(); ctx.arc(x, midY, b.desk ? 26 : 18, 0, Math.PI * 2); ctx.fillStyle = `rgba(0,53,71,${la})`; ctx.fill();
+        ctx.lineWidth = 2; ctx.strokeStyle = `rgba(210,236,242,${la})`; ctx.stroke();
+        ctx.beginPath(); ctx.arc(x, midY, (b.desk ? 26 : 18) + 8 + Math.sin(time * 2 + q) * 3, 0, Math.PI * 2); ctx.lineWidth = 1; ctx.strokeStyle = `rgba(210,236,242,${la * 0.3})`; ctx.stroke();
+        ctx.fillStyle = `rgba(247,250,251,${la})`; ctx.font = `600 ${b.desk ? 15 : 12}px "Space Grotesk", sans-serif`; ctx.fillText(String(q + 1), x, midY + 5);
+        ctx.font = `500 ${b.desk ? 13 : 10}px "IBM Plex Sans", sans-serif`; ctx.fillStyle = `rgba(210,236,242,${la})`; ctx.fillText(n, x, midY + (b.desk ? 56 : 42));
+      });
+    }
+  }
+
+  syncLogo() { const want = (this.props.logoIcon ?? 'swirl') === 'hex' ? './logos/icon-hex.png' : './logos/icon-swirl.png'; document.querySelectorAll('img[data-logo]').forEach(el => { if (!el.getAttribute('src').endsWith(want.slice(1))) el.setAttribute('src', want); }); }
+  componentDidUpdate() {
+    this.syncLogo(); this.watchStory();
+    if (this.pendingEnter) { this.tryEnter(); return; }
+    document.querySelectorAll('video').forEach(v => { if (!v._armed) { v._armed = 1; v.muted = true; v.defaultMuted = true; v.playsInline = true; v.setAttribute('muted', ''); v.play().catch(() => {}); } });
+    if (this.io) document.querySelectorAll('[data-reveal]').forEach(el => { if (el.style.opacity === '0' && !el._obs) { el._obs = 1; this.io.observe(el); } });
+  }
+  rail(id, d) { const el = document.getElementById(id); if (el) el.scrollBy({ left: d * Math.max(220, el.clientWidth * 0.7), behavior: 'smooth' }); }
+  setMenu(open) { document.body.style.overflow = open ? 'hidden' : ''; this.setState({ menu: open }); }
+  chatLogRef = React.createRef();
+  chatScroll() { const el = this.chatLogRef.current; if (el) requestAnimationFrame(() => { el.scrollTop = el.scrollHeight; }); }
+  localAnswer(q) {
+    const t = q.toLowerCase();
+    const hit = (...ws) => ws.some(w => t.includes(w));
+    if (hit('diagnos')) return 'No. Your results are guidance on what to focus on first. They do not diagnose, treat or prevent any condition. A qualified professional reviews any request before anything goes ahead.';
+    if (hit('how long', 'minutes', 'time')) return 'About three minutes. There are 24 questions and you can go back to change an answer at any time.';
+    if (hit('cost', 'price', 'free', 'pay')) return 'The assessment is free. Prices for tests, solutions and consultations are shown on their pages once confirmed by BODY IQ.';
+    if (hit('email', 'anonym', 'privacy', 'data', 'delete')) return 'Your answers stay anonymous until you choose to enter your email to unlock results. You can request deletion at any time — see the Privacy Policy or contact us.';
+    if (hit('eight', 'areas', 'measure', 'what do you')) return 'We look at eight areas: sleep, energy, focus, stress and recovery, activity, food and daily habits, weight and metabolism, and long-term health goals. Your three lowest areas become your priorities.';
+    if (hit('result', 'priorit', 'top 3', 'top three')) return 'After the assessment you see your top three priorities, why each one appeared, and one or two options linked to each. You only see options you are eligible for.';
+    if (hit('book', 'consult', 'call', 'appointment')) return 'You can book a consultation on the Book a consultation page. If a solution needs a review first, booking opens once the review is complete.';
+    if (hit('approv', 'review', 'eligib')) return 'Some solutions need a short approval form. A qualified professional reviews it and you get the decision by email. Options you are not eligible for are never shown.';
+    if (hit('test', 'blood', 'hormone', 'scan')) return 'When your answers point to it, we may suggest a test — a baseline blood panel, a hormone panel or a body composition scan. See Testing & diagnostics for details.';
+    if (hit('start', 'begin', 'assessment', 'quiz')) return 'Tap “Start your assessment” at the top of any page. No account or email is needed to begin.';
+    if (hit('contact', 'human', 'person', 'team')) return 'You can reach the team through the Contact page. For anything medical, please speak to a qualified professional.';
+    return 'I can help with how the assessment works, what we measure, results, testing, reviews and booking. For anything medical, please speak to a qualified professional. What would you like to know?';
+  }
+  async chatAsk(text) {
+    const q = (text || this.state.chatInput || '').trim(); if (!q || this.state.chatBusy) return;
+    const msgs = [...this.state.chatMsgs, { role: 'user', text: q }];
+    this.setState({ chatMsgs: msgs, chatInput: '', chatBusy: true }, () => this.chatScroll());
+    let reply = '';
+    try {
+      if (window.claude && window.claude.complete) {
+        reply = await window.claude.complete({ system: CHAT_SYSTEM, max_tokens: 350, messages: msgs.slice(-8).map(m => ({ role: m.role === 'user' ? 'user' : 'assistant', content: m.text })) });
+      }
+    } catch (e) { reply = ''; }
+    if (!reply) reply = this.localAnswer(q);
+    this.setState(s => ({ chatMsgs: [...s.chatMsgs, { role: 'assistant', text: reply.trim() }], chatBusy: false }), () => this.chatScroll());
+  }
+
+  renderVals() {
+    const s = this.state, desk = s.w >= 1060, r = s.route;
+    const stag = i => ({ op: s.menu ? 1 : 0, tf: s.menu ? 'translateX(0)' : 'translateX(30px)', delay: s.menu ? (0.08 + i * 0.03).toFixed(2) + 's' : '0s' });
+    const href = k => '#/' + k;
+    const raw = PAGES[r] || PAGES[''];
+    const hiw = (() => {
+    const s = this.state, desk = s.w >= 900;
+    const f = s.p * (S_SCENES.length - 1);
+    const cur = Math.round(f);
+    const jDesk = s.w >= 900;
+    return {
+      storyRef: this.storyRef, canvasRef: this.canvasRef,
+      storyH: (S_SCENES.length * 95) + 'vh',
+      textTop: desk ? '0' : '0', textBottom: desk ? '0' : '54%', textMax: desk ? '440px' : '100%',
+      h2Size: desk ? 'clamp(26px,2.6vw,38px)' : 'clamp(24px,6.2vw,30px)',
+      scenes: S_SCENES.map((sc, i) => ({ ...sc, i: String(i), top: desk ? '34%' : '12%' })),
+      dots: S_SCENES.map((_, i) => ({ i: String(i) })),
+      jDesk, jMob: !jDesk, jCols: jDesk ? 'minmax(0,1fr) minmax(0,1fr)' : 'minmax(0,1fr)', stepMin: jDesk ? '56vh' : 'auto', jPad: jDesk ? 'clamp(72px,9vw,128px) clamp(18px,3vw,40px)' : '56px 20px',
+      tabLabel: desk ? '11px' : '9px', tabNum: desk ? 'clamp(22px,2.4vw,34px)' : '18px',
+      jTabCols: jDesk ? 6 : 3, jNow: `${S_JOURNEY[s.js].k.charAt(0) + S_JOURNEY[s.js].k.slice(1).toLowerCase()} ${S_JOURNEY[s.js].n}`,
+      jTabs: S_JOURNEY.map((j, i) => ({ k: j.k, n: j.n, lc: i === s.js ? '#D2ECF2' : '#91B9C1', nc: i <= s.js ? '#F7FAFB' : '#4C8C96', fill: i <= s.js ? '100%' : '0%',
+        go: () => { const e = document.getElementById('jstep-' + i); if (e) window.scrollTo({ top: e.getBoundingClientRect().top + scrollY - 160, behavior: 'smooth' }); } })),
+      jSteps: S_JOURNEY.map((j, i) => { const ph = S_PH[j.ph];
+        return { ...j, later: !!j.later, id: 'jstep-' + i, slot: 'v11-j-' + (i + 1), mslot: 'v11-jm-' + (i + 1), src: ph[0], credit: ph[1], href: ph[2],
+          op: i === s.js ? 1 : 0, sc: i === s.js ? 1 : 1.06, textOp: jDesk ? (i === s.js ? 1 : 0.55) : 1 }; }),
+};
+    })();
+    const sections = raw.map((sec, si) => {
+      const toneKey = ({ shell: 'light', foam: 'light', deep: 'dark', sea: 'dark' })[sec.tone] || sec.tone || 'light', isDark = toneKey === 'dark';
+      const tone = TONES[toneKey], boxed = isDark, isVid = sec.type === 'video', isHero = sec.type === 'hero';
+      const first = si === 0;
+      const isStory = sec.type === 'story', isJourney = sec.type === 'journey', bleed = isStory || isJourney;
+      const prev = raw[si - 1], prevDark = !!prev && (['dark', 'sea', 'deep'].includes(prev.tone) || ['story', 'journey', 'video'].includes(prev.type));
+      const SP = desk ? 'clamp(64px,8vw,120px)' : '56px';
+      const last = si === raw.length - 1;
+      const outerPad = bleed || isVid || boxed ? '0' : `${first ? 'clamp(48px,6vw,96px)' : SP} clamp(20px,3vw,40px) ${last ? SP : '0'}`;
+      const secMt = boxed && !first && !prevDark ? SP : '0';
+      const base = { ...sec, ...tone, isVideo: isVid, isHero, isCards: sec.type === 'cards', isSteps: sec.type === 'steps', isSplit: sec.type === 'split', isNotice: sec.type === 'notice',
+        isCardsList: sec.type === 'cards' && sec.layout === 'list', isCardsGrid: sec.type === 'cards' && sec.layout !== 'list', listCols: desk ? 'minmax(0,0.5fr) minmax(0,1fr) minmax(0,1.6fr)' : 'minmax(0,1fr)',
+        isStepsTimeline: sec.type === 'steps' && sec.layout === 'timeline', isStepsRow: sec.type === 'steps' && sec.layout === 'row', isStepsGrid: sec.type === 'steps' && !sec.layout,
+        isNoticeBand: sec.type === 'notice' && sec.layout === 'band', isNoticeIcon: sec.type === 'notice' && sec.layout !== 'band', lineBd: isDark ? '#FFFFFF2E' : '#0B2A331F', listHover: isDark ? '#FFFFFF12' : '#FFFFFF66',
+        heroAlign: sec.layout === 'center' ? 'center' : 'flex-start', heroTA: sec.layout === 'center' ? 'center' : 'left', heroMaxW: sec.layout === 'center' ? '820px' : '640px', chipLeft: ['center', 'wide'].includes(sec.layout) || sec.layout === 'flip' ? '24px' : 'clamp(-28px,-2vw,-12px)', heroGap: sec.layout === 'center' || sec.layout === 'wide' ? 'clamp(32px,4vw,56px)' : 'clamp(28px,5vw,72px)',
+        heroTextOrder: sec.layout === 'flip' && desk ? 2 : 1, heroImgOrder: sec.layout === 'flip' && desk ? 1 : 2,
+        isResults: sec.type === 'results', isFaq: sec.type === 'faq', isForm: sec.type === 'form', isBooking: sec.type === 'booking', isSuccess: sec.type === 'success', ...(bleed ? hiw : {}), isScrolly: sec.type === 'scrolly', isRail: sec.type === 'rail', isPaths: sec.type === 'paths', railId: 'rail-' + si, prev: () => this.rail('rail-' + si, -1), next: () => this.rail('rail-' + si, 1), words: hl(sec.t || '', isDark || isVid), heroImg: sec.heroImg || '', hasHeroImg: !!sec.heroImg, chip: sec.chip || '', heroAr: ['center', 'wide'].includes(sec.layout) ? (desk ? '21/9' : '16/10') : desk ? '4/5' : '4/3', heroGrid: sec.heroImg && desk && !['center', 'wide'].includes(sec.layout) ? (sec.layout === 'flip' ? 'minmax(0,0.85fr) minmax(0,1.15fr)' : 'minmax(0,1.15fr) minmax(0,0.85fr)') : 'minmax(0,1fr)', isLegal: sec.type === 'legal', isCta: sec.type === 'cta', isStory, isJourney,
+        ovf: bleed ? 'visible' : 'hidden', iso: bleed ? 'auto' : 'isolate', blur: 'none', boxBd: 'none', cardSh: isDark ? 'none' : '0 1px 2px #0B2A330A, 0 16px 40px -28px #00354740', secBg: boxed && sec.type !== 'cta' ? SEA_GRAD : 'transparent', secMt,
+        hasHead: !!sec.t && ['cards', 'steps', 'results', 'scrolly', 'rail', 'paths'].includes(sec.type), headLink: !!sec.cta && ['paths', 'cards', 'rail'].includes(sec.type), faqCols: desk ? 'minmax(0,0.8fr) minmax(0,1.2fr)' : 'minmax(0,1fr)', faqPos: desk ? 'sticky' : 'static', faqMb: desk ? '0' : '8px', legalCols: desk ? 'minmax(0,240px) minmax(0,1fr)' : 'minmax(0,1fr)', headMb: desk ? 'clamp(32px,4vw,48px)' : '28px',
+        k: sec.k || '', t: sec.t || '', d: sec.d || '', cta: sec.cta || '', ctaHref: sec.ctaHref || '#', cta2: sec.cta2 || '', cta2Href: sec.cta2Href || '#',
+        outerPad, max: bleed || isVid || sec.type === 'cta' ? '100%' : '1240px', radius: '0',
+        innerPad: bleed || isVid ? '0' : boxed ? (sec.type === 'cta' ? (desk ? 'clamp(80px,10vw,144px) 40px' : '72px 20px') : (desk ? 'clamp(64px,8vw,120px) 40px' : '56px 20px')) : '0', boxSizing: boxed && sec.type !== 'cta' ? 'content-box' : 'border-box',
+        bg: isVid ? '#003547' : sec.type === 'cta' ? '#003547' : 'transparent', fg: isVid ? '#FFFFFF' : tone.fg, min: desk ? (sec.min || '240px') : ((sec.items || []).length >= 6 && !(sec.items || []).some(c => c.img || c.forceImg) ? '150px' : (sec.min || '240px')), slot: `web-${r || 'home'}-${si}`, ph: sec.ph || 'Photo', ar: sec.ar || '4/3',
+        img: sec.img || '', credit: sec.credit || '', href: sec.href || '', ar: sec.ar || '4/3', textOrder: sec.flip && desk ? 2 : 1, imgOrder: sec.flip && desk ? 1 : 2,
+        bullets: sec.bullets || [], items: [], who: PROF.who, pri: [], fields: [], consents: [], rows: sec.rows || [], blocks: sec.blocks || [], summary: sec.summary || '', note: sec.note || '', submit: sec.submit || '', submitHref: sec.submitHref || '#' };
+      if (sec.type === 'cards' || sec.type === 'steps' || sec.type === 'success') base.items = (sec.items || []).map((c, i) => ({ ...c, n: sec.type === 'steps' ? String(i + 1) : (c.n || ''), tag: c.tag || '', confirm: !!c.confirm, meta: c.meta || '', link: c.link || '', linkHref: c.linkHref || '#',
+        img: c.img || '', showImg: !!(c.img || c.forceImg), credit: c.credit || '', href: c.href || '', ph: c.ph || 'Photo', ar: c.ar || '4/3', slot: `web-${r || 'home'}-${si}-${i}`, span: 'auto', n2: String(i + 1).padStart(2, '0'), lineOp: i === (sec.items || []).length - 1 ? 0 : 1, pad: (c.img || c.forceImg) ? '12px' : '24px', textPad: (c.img || c.forceImg) ? '4px 8px 10px' : '0' }));
+      if (sec.type === 'paths') base.items = sec.items.map((c, i) => ({ ...c, tag: c.tag || '', tl: c.tl || '', inc: c.inc || [], gain: c.gain || [], hasInc: !!(c.inc && c.inc.length), hasGain: !!(c.gain && c.gain.length), incLabel: c.incLabel || 'INCLUDES', img: c.img || '', ph: c.ph || 'Photo', ar: c.ar || '4/3', cta: c.cta || 'Learn more', href: c.href || '#', slot: 'web-' + (r || 'home') + '-' + si + '-p' + i }));
+      if (sec.type === 'rail') { base.items = sec.items.map((c, i) => ({ ...c, slot: 'web-' + (r || 'home') + '-' + si + '-r' + i, linkHref: c.linkHref || A })); base.railW = desk ? 'clamp(168px,15vw,212px)' : 'min(68vw,260px)'; base.railPad = desk ? '0' : '20px'; }
+      if (sec.type === 'scrolly') {
+        const act = (s.scr || {})[si] || 0, n = sec.items.length;
+        base.items = sec.items.map((c, i) => ({ t: c.t, d: c.d, img: c.img, tag: '', n: String(i + 1).padStart(2, '0'), key: si + '-' + i, slot: 'web-' + (r || 'home') + '-' + si + '-s' + i,
+          op: i === act ? 1 : 0, sc: i === act ? 1 : 1.08, textOp: desk ? (i === act ? 1 : 0.55) : 1, tx: desk && i === act ? '8px' : '0px', dotBg: i <= act ? (isDark ? '#D2ECF2' : '#09606D') : 'transparent', dotFg: i <= act ? (isDark ? '#003547' : '#FFFFFF') : (isDark ? '#D2ECF2' : '#09606D') }));
+        base.scDotBd = isDark ? '#D2ECF2' : '#09606D';
+        base.nowT = sec.items[act].t; base.nowN = String(act + 1).padStart(2, '0') + ' / ' + String(n).padStart(2, '0'); base.scPct = ((act + 1) / n * 100) + '%';
+        base.scCols = desk ? 'minmax(0,0.9fr) minmax(0,1.1fr)' : 'minmax(0,1fr)'; base.stepMin = desk ? 'clamp(220px,34vh,320px)' : 'auto';
+      }
+      if (sec.type === 'results') { base.pri = PROF.pri.map((p, i) => ({ ...p, n: i + 1 })); base.bullets = PROF.bullets; }
+      if (sec.type === 'faq') base.items = sec.items.map((f, i) => { const key = si + '-' + i, open = !!s.faq[key] || (i === 0 && s.faq[key] === undefined);
+        return { ...f, group: f.group || '', mh: open ? '600px' : '0px', rot: open ? 'rotate(45deg)' : 'rotate(0)', toggle: () => this.setState(st => ({ faq: { ...st.faq, [key]: !open } })) }; });
+      if (sec.type === 'form') {
+        base.fields = sec.fields.map((f, fi) => { const key = si + '-' + fi;
+          return { label: f.label, type: f.type || 'text', ph: f.ph || '', isInput: f.kind === 'input', isArea: f.kind === 'area', isSelect: f.kind === 'select',
+            opts: (f.opts || []).map(o => { const on = s.sel[key] === o; return { t: o, bg: on ? '#09606D' : '#F7FAFB', fg: on ? '#FFFFFF' : '#003547', bd: on ? '#09606D' : '#0B2A3326', pick: e => { e && e.preventDefault && e.preventDefault(); this.setState(st => ({ sel: { ...st.sel, [key]: o } })); } }; }) }; });
+        base.consents = sec.consents.map((t, ci) => { const key = si + '-' + ci, on = !!s.cons[key]; return { t, mark: on ? '✓' : '', bg: on ? '#09606D' : '#FFFFFF', bd: on ? '#09606D' : '#0B2A3340', toggle: () => this.setState(st => ({ cons: { ...st.cons, [key]: !on } })) }; });
+      }
+      return base;
+    });
+    const main = [['how-it-works', 'How it works'], ['what-we-measure', 'What we measure'], ['packages', 'Packages'], ['testing', 'Testing'], ['solutions', 'Solutions'], ['science', 'Science'], ['about', 'About']];
+    return {
+      logoFilter: s.scrolled || r ? 'none' : 'brightness(0) invert(1)',
+      routeKey: r || 'home', desk, mob: !desk, videoRef: this.videoRef, footBrandCol: desk ? 'span 2' : '1 / -1', navCta: desk ? 'Start assessment' : 'Start',
+      heroCols: desk ? 'minmax(0,1fr) minmax(0,0.95fr)' : 'minmax(0,1fr)', heroMinH: desk ? '100vh' : '100svh', heroPad: desk ? 'clamp(96px,10vw,140px) clamp(18px,4vw,56px) clamp(56px,6vw,80px)' : '96px 20px 40px', cueDisp: desk ? 'flex' : 'none',
+      heroFacts: [{ v: 'DNA & functional', k: 'TESTING' }, { v: 'Personalized', k: 'NUTRITION & SUPPLEMENTS' }, { v: 'Expert', k: 'COACHING & REVIEW' }],
+      heroCards: [
+        { img: IMG.cell, t: 'Cellular health', k: 'LONGEVITY', x: '30%', y: '4%', w: '56%', ar: '4/5', z: 2, px: '0.18', f: '1', slot: 'web-hero-c1' },
+        { img: IMG.mol, t: 'Metabolism', k: 'MEASURE', x: '0%', y: '46%', w: '40%', ar: '1/1', z: 3, px: '0.32', f: '2', slot: 'web-hero-c2' },
+        { img: IMG.dna, t: 'Your biology', k: 'DECODE', x: '72%', y: '52%', w: '32%', ar: '3/4', z: 1, px: '0.1', f: '3', slot: 'web-hero-c3' },
+      ],
+      navBg: s.scrolled || r ? (desk ? '#F7FAFBE6' : '#F7FAFB') : 'transparent', navBd: s.scrolled ? '#0B2A3314' : 'transparent', navBlur: (s.scrolled || r) && desk ? 'blur(14px)' : 'none',
+      navFg: s.scrolled || r ? '#003547' : '#FFFFFF', navAcc: s.scrolled || r ? '#1A7A86' : '#D2ECF2', navHover: s.scrolled || r ? '#D2ECF2' : '#FFFFFF1F', mainPad: r ? '62px' : '0',
+      navLinks: main.map(([k, t]) => ({ t, href: href(k), bg: r === k || (k === 'packages' && r.startsWith('pkg-')) ? '#D2ECF2' : 'transparent' })),
+      openMenu: () => this.setMenu(true), closeMenu: () => this.setMenu(false),
+      menuPE: s.menu ? 'auto' : 'none', menuOp: s.menu ? 1 : 0, menuTf: s.menu ? 'translateX(0)' : 'translateX(100%)',
+      menuLinks: ROUTES.filter(([k]) => !['approval', 'confirmation', 'results'].includes(k)).map(([k, t], i) => ({ t, href: href(k), col: r === k ? '#09606D' : '#003547', ...stag(i) })),
+      chatPE: s.chat ? 'auto' : 'none', chatOp: s.chat ? 1 : 0, chatTf: s.chat ? 'translateY(0) scale(1)' : 'translateY(12px) scale(.98)',
+      chatBtnLabel: s.chat ? 'Close' : 'Ask BODY IQ', chatLblDisp: desk ? 'inline' : 'none', chatBtnPad: desk ? '0 20px 0 16px' : '0', chatOpenIcon: !s.chat, chatCloseIcon: s.chat, chatW: desk ? '380px' : 'auto', chatH: desk ? 'min(560px,calc(100vh - 120px))' : 'min(640px,88svh)', chatPos: desk ? 'static' : 'fixed', chatLeft: desk ? 'auto' : '0', chatRight: desk ? 'auto' : '0', chatBottom: desk ? 'auto' : '0', chatRadius: desk ? '20px' : '20px 20px 0 0', chatBtnDisp: !desk && s.chat ? 'none' : 'flex', chatToggle: () => { const open = !s.chat; if (!desk) document.body.style.overflow = open ? 'hidden' : ''; this.setState({ chat: open }, () => this.chatScroll()); }, chatClose: () => { document.body.style.overflow = ''; this.setState({ chat: false }); },
+      chatMsgs: s.chatMsgs.map(m => m.role === 'user' ? { text: m.text, align: 'flex-end', bg: '#09606D', fg: '#FFFFFF', bd: '#09606D' } : { text: m.text, align: 'flex-start', bg: '#FFFFFF', fg: '#0B2A33', bd: '#0B2A3314' }),
+      chatBusy: s.chatBusy, chatShowChips: s.chatMsgs.length <= 1 && !s.chatBusy,
+      chatChips: ['How long does it take?', 'Is this a diagnosis?', 'What do you measure?', 'How do I book a call?'].map(t => ({ t, ask: () => this.chatAsk(t) })),
+      chatInput: s.chatInput, chatType: e => this.setState({ chatInput: e.target.value }), chatKey: e => { if (e.key === 'Enter') this.chatAsk(); }, chatSend: () => this.chatAsk(), chatLogRef: this.chatLogRef,
+      pageOp: s.phase === 'out' ? 0 : 1, pageTf: s.phase === 'out' ? MOTION[THEME_OF[r] || 'blurRise'].out : 'none',
+      sections,
+      footerCols: [
+        { h: 'LEARN', links: [['how-it-works', 'How it works'], ['what-we-measure', 'What we measure'], ['science', 'Science & methodology'], ['faq', 'FAQ']].map(([k, t]) => ({ t, href: href(k) })) },
+        { h: 'SOLUTIONS', links: [['packages', 'Packages'], ['testing', 'Testing & diagnostics'], ['solutions', 'Optimization solutions'], ['products', 'Products & protocols'], ['book', 'Book a consultation']].map(([k, t]) => ({ t, href: href(k) })) },
+        { h: 'COMPANY', links: [['about', 'About us'], ['contact', 'Contact us'], ['results', 'Example results'], ['approval', 'Approval form']].map(([k, t]) => ({ t, href: href(k) })) },
+        { h: 'LEGAL', links: [['privacy', 'Privacy policy'], ['terms', 'Terms & conditions'], ['disclaimer', 'Medical disclaimer']].map(([k, t]) => ({ t, href: href(k) })) },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
